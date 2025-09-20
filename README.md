@@ -13,11 +13,11 @@
 
 ## Përshkrim
 
-Ky repository është krijuar për grupin Algoritmet e Avancuara për vitin akademik 2025/26. Repository përmban të gjitha zgjidhjet, kodet dhe iterimet e grupeve për secilën javë të lëndës.
+Ky repository është krijuar për lëndën Algoritmet e Avancuara për vitin akademik 2025/26. Repository përmban të gjitha zgjidhjet, kodet dhe iterimet e grupeve për secilën javë të lëndës.
 
 ## Instruksione për setup dhe workflow në vazhdim të projektit
 
-Hap projektin në environment (VS Code, PyCharm, etj.), pastaj bëni pull nga branch-i kryesor (`main`).
+Hap projektin në editor (VS Code, PyCharm, etj.), pastaj bëni pull nga branch-i kryesor (`main`).
 
 Për çdo javë, secili grup ka një branch të dedikuar me emërtimin java_X, ku X përfaqëson numrin e javës (p.sh., `java_I`, `java_II`, …, `java_XV`).
 
