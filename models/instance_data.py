@@ -14,4 +14,15 @@ class InstanceData:
         self.channels = channels
 
     def __repr__(self):
-        return f"InstanceData({self.channels_count} channels, {len(self.time_preferences)} time prefs)"
+        return (f"InstanceData(\n"
+                f"  opening_time={self.opening_time},\n"
+                f"  closing_time={self.closing_time},\n"
+                f"  min_duration={self.min_duration},\n"
+                f"  max_consecutive_genre={self.max_consecutive_genre},\n"
+                f"  channels_count={self.channels_count},\n"
+                f"  switch_penalty={self.switch_penalty},\n"
+                f"  termination_penalty={self.termination_penalty},\n"
+                f"  priority_blocks={self.priority_blocks},\n"
+                f"  time_preferences={self.time_preferences},\n"
+                f"  channels={self.channels}\n"
+                f")")
