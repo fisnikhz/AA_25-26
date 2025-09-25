@@ -1,6 +1,4 @@
 import json
-import sys
-
 from models.channel import Channel
 from models.instance_data import InstanceData
 from models.program import Program
@@ -61,18 +59,8 @@ class Parser:
 
             return instance
 
-        except FileNotFoundError:
-            print(f"File not found: {self.file_path}")
-            sys.exit(1)
-        except PermissionError:
-            print(f"Permission denied when accessing: {self.file_path}")
-            sys.exit(1)
-        except json.JSONDecodeError as e:
-            print(f"Invalid JSON: {e}")
-            sys.exit(1)
-        except KeyError as e:
-            print(f"Missing required field in JSON: {e}")
-            sys.exit(1)
+        except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError) as e:
+            # re-raise so parse_all_files can handle it
+            raise e
         except Exception as e:
-            print(f"Unexpected error: {e}")
-            sys.exit(1)
+            raise e

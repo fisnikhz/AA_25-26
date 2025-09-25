@@ -1,4 +1,5 @@
 import os
+import json
 from parser.parser import Parser
 
 def parse_all_files(folder_path):

@@ -1,7 +1,7 @@
 import os
 from parser.all_inputs_parser import parse_all_files
 
-DATA_FOLDER = "data/input"
+DATA_FOLDER = "data\\input"
 
 def main():
     if not os.path.isdir(DATA_FOLDER):
