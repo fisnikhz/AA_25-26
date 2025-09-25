@@ -26,7 +26,8 @@ class Parser:
                     p["genre"],
                     p["score"]
                 ) for p in ch.get("programs", [])]
-                channels.append(Channel(ch["channel_id"], programs))
+                channel_name = ch.get("channel_name", f"Channel_{ch['channel_id']}")
+                channels.append(Channel(ch["channel_id"], channel_name, programs))
 
             priority_blocks = [
                 PriorityBlock(
