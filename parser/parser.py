@@ -4,6 +4,8 @@ import sys
 from models.channel import Channel
 from models.instance_data import InstanceData
 from models.program import Program
+from models.priority_block import PriorityBlock
+from models.time_preference import TimePreference
 
 
 class Parser:
@@ -26,6 +28,23 @@ class Parser:
                 ) for p in ch.get("programs", [])]
                 channels.append(Channel(ch["channel_id"], programs))
 
+            priority_blocks = [
+                PriorityBlock(
+                    pb["start"],
+                    pb["end"],
+                    pb["allowed_channels"]
+                ) for pb in data.get("priority_blocks", [])
+            ]
+
+            time_preferences = [
+                TimePreference(
+                    tp["start"],
+                    tp["end"],
+                    tp["preferred_genre"],
+                    tp["bonus"]
+                ) for tp in data.get("time_preferences", [])
+            ]
+
             instance = InstanceData(
                 opening_time=data["opening_time"],
                 closing_time=data["closing_time"],
@@ -34,8 +53,8 @@ class Parser:
                 channels_count=data["channels_count"],
                 switch_penalty=data["switch_penalty"],
                 termination_penalty=data["termination_penalty"],
-                priority_blocks=data["priority_blocks"],
-                time_preferences=data["time_preferences"],
+                priority_blocks=priority_blocks,
+                time_preferences=time_preferences,
                 channels=channels
             )
 
