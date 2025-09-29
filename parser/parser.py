@@ -18,14 +18,22 @@ class Parser:
                 data = json.load(file)
 
             channels = []
+            unique_program_id = 1
+
             for ch in data.get("channels", []):
-                programs = [Program(
-                    p["program_id"],
-                    p["start"],
-                    p["end"],
-                    p["genre"],
-                    p["score"]
-                ) for p in ch.get("programs", [])]
+                programs = []
+                for p in ch.get("programs", []):
+                    program = Program(
+                        p["program_id"],
+                        p["start"],
+                        p["end"],
+                        p["genre"],
+                        p["score"],
+                        unique_program_id
+                    )
+                    programs.append(program)
+                    unique_program_id += 1
+
                 channel_name = ch.get("channel_name", f"Channel_{ch['channel_id']}")
                 channels.append(Channel(ch["channel_id"], channel_name, programs))
 
