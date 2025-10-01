@@ -3,11 +3,18 @@
 from parser.file_selector import select_file
 from parser.parser import Parser
 from scheduler.scheduler import schedule_channels
+# from models.solution import Schedule
+# from serializer.serializer import SolutionSerializer
 
 def main():
     file_path = select_file()
     parser = Parser(file_path)
     instance = parser.parse()
+
+    # Simulim i schedules
+    #
+    # serializer = SolutionSerializer()
+    # serializer.serialize(schedule_list)
 
     print("\nOpening time:", instance.opening_time)
     print("Closing time:", instance.closing_time)
