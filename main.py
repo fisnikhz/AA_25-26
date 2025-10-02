@@ -1,6 +1,8 @@
+#!/usr/bin/env python3 
+
 from parser.file_selector import select_file
 from parser.parser import Parser
-
+from scheduler.scheduler import schedule_channels
 
 def main():
     file_path = select_file()
@@ -14,6 +16,11 @@ def main():
         print(f"  Channel {ch.channel_name}:")
         for p in ch.programs:
             print(f"    {p.program_id} | {p.start}-{p.end} | {p.genre} | Score: {p.score}")
+
+    # qikjo o qitu veq per arsye zhvilluse, fshije ma von
+    print(instance)
+    
+    schedule_channels(instance)
 
 if __name__ == "__main__":
     main()
