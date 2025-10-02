@@ -3,18 +3,12 @@
 from parser.file_selector import select_file
 from parser.parser import Parser
 from scheduler.scheduler import schedule_channels
-# from models.solution import Schedule
-# from serializer.serializer import SolutionSerializer
+from serializer.serializer import SolutionSerializer
 
 def main():
     file_path = select_file()
     parser = Parser(file_path)
     instance = parser.parse()
-
-    # Simulim i schedules
-    #
-    # serializer = SolutionSerializer()
-    # serializer.serialize(schedule_list)
 
     print("\nOpening time:", instance.opening_time)
     print("Closing time:", instance.closing_time)
@@ -23,11 +17,15 @@ def main():
         print(f"  Channel {ch.channel_name}:")
         for p in ch.programs:
             print(f"    {p.program_id} | {p.start}-{p.end} | {p.genre} | Score: {p.score}")
-
-    # qikjo o qitu veq per arsye zhvilluse, fshije ma von
-    print(instance)
     
-    schedule_channels(instance)
+    schedule_list = schedule_channels(instance)
+    
+    print("\nSchedule:")
+    for schedule in schedule_list:
+        print(f"Channel {schedule.channel_index}: {schedule.start_time}-{schedule.end_time}")
+    
+    serializer = SolutionSerializer()
+    serializer.serialize(schedule_list)
 
 if __name__ == "__main__":
     main()
