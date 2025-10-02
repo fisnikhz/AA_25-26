@@ -22,8 +22,6 @@ def main():
     parser = Parser(file_path)
     instance = parser.parse()
 
-
-
     print("\nOpening time:", instance.opening_time)
     print("Closing time:", instance.closing_time)
     print("Channels:")
@@ -40,7 +38,6 @@ def main():
     output_file_name = SolutionSerializer.output_file_name_input()
     serializer = SolutionSerializer(output_file_name)
     serializer.serialize(solution)
-
 
 if __name__ == "__main__":
     main()
