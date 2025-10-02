@@ -11,12 +11,13 @@ class AlgorithmUtils:
 
     @staticmethod
     def get_best_fit(schedule_plan: List[Schedule], instance_data: InstanceData, schedule_time: int,
-                     valid_channel_indexes: List[int]):
+                     valid_channel_indexes: List[int]) ->  tuple[Channel, Program, int]:
 
         # returns best channel to pick at the time and what score will it provide if we switch to it
 
         max_score = 0
         best_channel = None
+        best_program = None
 
         for channel_index in valid_channel_indexes:
             channel = instance_data.channels[channel_index]
@@ -36,8 +37,9 @@ class AlgorithmUtils:
             if score > max_score:
                 max_score = score
                 best_channel = channel
+                best_program = program
 
-        return best_channel, max_score
+        return best_channel, best_program, max_score
 
     @staticmethod
     def get_time_preference_bonus(instance_data: InstanceData, program: Program, schedule_time: int):
@@ -85,3 +87,5 @@ class AlgorithmUtils:
 
         if last_schedule.unique_program_id != program.unique_id and schedule_time < last_schedule.end_time:
             penalty -= instance_data.termination_penalty
+
+        return penalty
