@@ -1,0 +1,29 @@
+{
+    "total_score": 380,
+    "schedule_plan": [
+        {
+            "channel_id": 0,
+            "program_id": "n1",
+            "start_time": 540,
+            "end_time": 600,
+            "fitness": 200,
+            "unique_program_id": 1
+        },
+        {
+            "channel_id": 1,
+            "program_id": "s1",
+            "start_time": 720,
+            "end_time": 840,
+            "fitness": 125,
+            "unique_program_id": 3
+        },
+        {
+            "channel_id": 2,
+            "program_id": "m1",
+            "start_time": 960,
+            "end_time": 1020,
+            "fitness": 55,
+            "unique_program_id": 5
+        }
+    ]
+}

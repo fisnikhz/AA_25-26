@@ -1,0 +1,245 @@
+{
+    "total_score": 3394,
+    "schedule_plan": [
+        {
+            "channel_id": 0,
+            "program_id": "HRT1_1",
+            "start_time": 360,
+            "end_time": 390,
+            "fitness": 205,
+            "unique_program_id": 1
+        },
+        {
+            "channel_id": 1,
+            "program_id": "HRT2_2",
+            "start_time": 390,
+            "end_time": 420,
+            "fitness": 102,
+            "unique_program_id": 15
+        },
+        {
+            "channel_id": 10,
+            "program_id": "CMC_3",
+            "start_time": 420,
+            "end_time": 450,
+            "fitness": 100,
+            "unique_program_id": 140
+        },
+        {
+            "channel_id": 11,
+            "program_id": "RTL_Life_3",
+            "start_time": 450,
+            "end_time": 480,
+            "fitness": 58,
+            "unique_program_id": 154
+        },
+        {
+            "channel_id": 8,
+            "program_id": "ArenaSport2_2",
+            "start_time": 480,
+            "end_time": 510,
+            "fitness": 105,
+            "unique_program_id": 113
+        },
+        {
+            "channel_id": 1,
+            "program_id": "HRT2_3",
+            "start_time": 510,
+            "end_time": 540,
+            "fitness": 201,
+            "unique_program_id": 16
+        },
+        {
+            "channel_id": 8,
+            "program_id": "ArenaSport2_4",
+            "start_time": 540,
+            "end_time": 570,
+            "fitness": 73,
+            "unique_program_id": 115
+        },
+        {
+            "channel_id": 10,
+            "program_id": "CMC_5",
+            "start_time": 570,
+            "end_time": 600,
+            "fitness": 179,
+            "unique_program_id": 142
+        },
+        {
+            "channel_id": 12,
+            "program_id": "DomaTV_4",
+            "start_time": 600,
+            "end_time": 630,
+            "fitness": 74,
+            "unique_program_id": 167
+        },
+        {
+            "channel_id": 6,
+            "program_id": "SportKlub2_5",
+            "start_time": 630,
+            "end_time": 660,
+            "fitness": 69,
+            "unique_program_id": 85
+        },
+        {
+            "channel_id": 12,
+            "program_id": "DomaTV_5",
+            "start_time": 660,
+            "end_time": 690,
+            "fitness": 87,
+            "unique_program_id": 168
+        },
+        {
+            "channel_id": 0,
+            "program_id": "HRT1_5",
+            "start_time": 690,
+            "end_time": 720,
+            "fitness": 166,
+            "unique_program_id": 5
+        },
+        {
+            "channel_id": 1,
+            "program_id": "HRT2_7",
+            "start_time": 720,
+            "end_time": 750,
+            "fitness": 74,
+            "unique_program_id": 20
+        },
+        {
+            "channel_id": 10,
+            "program_id": "CMC_7",
+            "start_time": 750,
+            "end_time": 840,
+            "fitness": 109,
+            "unique_program_id": 144
+        },
+        {
+            "channel_id": 13,
+            "program_id": "Oxygen_7",
+            "start_time": 840,
+            "end_time": 870,
+            "fitness": 199,
+            "unique_program_id": 183
+        },
+        {
+            "channel_id": 3,
+            "program_id": "NovaTV_9",
+            "start_time": 870,
+            "end_time": 900,
+            "fitness": 197,
+            "unique_program_id": 51
+        },
+        {
+            "channel_id": 0,
+            "program_id": "HRT1_7",
+            "start_time": 900,
+            "end_time": 930,
+            "fitness": 60,
+            "unique_program_id": 7
+        },
+        {
+            "channel_id": 5,
+            "program_id": "SportKlub1_7",
+            "start_time": 930,
+            "end_time": 960,
+            "fitness": 92,
+            "unique_program_id": 76
+        },
+        {
+            "channel_id": 14,
+            "program_id": "HBO_Adria_9",
+            "start_time": 960,
+            "end_time": 990,
+            "fitness": 76,
+            "unique_program_id": 199
+        },
+        {
+            "channel_id": 4,
+            "program_id": "RTL_Hrvatska_7",
+            "start_time": 990,
+            "end_time": 1020,
+            "fitness": 97,
+            "unique_program_id": 65
+        },
+        {
+            "channel_id": 3,
+            "program_id": "NovaTV_11",
+            "start_time": 1020,
+            "end_time": 1050,
+            "fitness": 68,
+            "unique_program_id": 53
+        },
+        {
+            "channel_id": 1,
+            "program_id": "HRT2_13",
+            "start_time": 1050,
+            "end_time": 1080,
+            "fitness": 181,
+            "unique_program_id": 26
+        },
+        {
+            "channel_id": 14,
+            "program_id": "HBO_Adria_10",
+            "start_time": 1080,
+            "end_time": 1110,
+            "fitness": 93,
+            "unique_program_id": 200
+        },
+        {
+            "channel_id": 2,
+            "program_id": "HRT3_9",
+            "start_time": 1110,
+            "end_time": 1170,
+            "fitness": 176,
+            "unique_program_id": 39
+        },
+        {
+            "channel_id": 1,
+            "program_id": "HRT2_15",
+            "start_time": 1170,
+            "end_time": 1200,
+            "fitness": 145,
+            "unique_program_id": 28
+        },
+        {
+            "channel_id": 3,
+            "program_id": "NovaTV_14",
+            "start_time": 1200,
+            "end_time": 1230,
+            "fitness": 85,
+            "unique_program_id": 56
+        },
+        {
+            "channel_id": 1,
+            "program_id": "HRT2_16",
+            "start_time": 1230,
+            "end_time": 1260,
+            "fitness": 76,
+            "unique_program_id": 29
+        },
+        {
+            "channel_id": 4,
+            "program_id": "RTL_Hrvatska_10",
+            "start_time": 1260,
+            "end_time": 1290,
+            "fitness": 75,
+            "unique_program_id": 68
+        },
+        {
+            "channel_id": 14,
+            "program_id": "HBO_Adria_14",
+            "start_time": 1290,
+            "end_time": 1350,
+            "fitness": 84,
+            "unique_program_id": 204
+        },
+        {
+            "channel_id": 0,
+            "program_id": "HRT1_13",
+            "start_time": 1350,
+            "end_time": 1380,
+            "fitness": 88,
+            "unique_program_id": 13
+        }
+    ]
+}
