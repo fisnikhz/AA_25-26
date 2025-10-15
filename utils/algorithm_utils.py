@@ -10,7 +10,7 @@ from utils.utils import Utils
 class AlgorithmUtils:
 
     @staticmethod
-    def get_best_fit(schedule_plan: List[Schedule], instance_data: InstanceData, schedule_time: int,
+    def get_best_fit(scheduled_programs: List[Schedule], instance_data: InstanceData, schedule_time: int,
                      valid_channel_indexes: List[int]) ->  tuple[Channel, Program, int]:
 
         # returns best channel to pick at the time and what score will it provide if we switch to it
@@ -30,9 +30,9 @@ class AlgorithmUtils:
 
             score += program.score
             score += AlgorithmUtils.get_time_preference_bonus(instance_data, program, schedule_time)
-            score += AlgorithmUtils.get_switch_penalty(schedule_plan, instance_data, channel)
-            score += AlgorithmUtils.get_delay_penalty(schedule_plan, instance_data, program, schedule_time)
-            score += AlgorithmUtils.get_early_termination_penalty(schedule_plan, instance_data, program, schedule_time)
+            score += AlgorithmUtils.get_switch_penalty(scheduled_programs, instance_data, channel)
+            score += AlgorithmUtils.get_delay_penalty(scheduled_programs, instance_data, program, schedule_time)
+            score += AlgorithmUtils.get_early_termination_penalty(scheduled_programs, instance_data, program, schedule_time)
 
             if score > max_score:
                 max_score = score
@@ -51,25 +51,25 @@ class AlgorithmUtils:
         return score
 
     @staticmethod
-    def get_switch_penalty(schedule_plan: List[Schedule], instance_data: InstanceData, channel: Channel):
+    def get_switch_penalty(scheduled_programs: List[Schedule], instance_data: InstanceData, channel: Channel):
         penalty = 0
-        if not schedule_plan:
+        if not scheduled_programs:
             return penalty
 
-        last_schedule = schedule_plan[-1]
+        last_schedule = scheduled_programs[-1]
         if last_schedule.channel_id != channel.channel_id:
             penalty -= instance_data.switch_penalty
 
         return penalty
 
     @staticmethod
-    def get_delay_penalty(schedule_plan: List[Schedule], instance_data: InstanceData, program: Program,
+    def get_delay_penalty(scheduled_programs: List[Schedule], instance_data: InstanceData, program: Program,
                           schedule_time: int):
         penalty = 0
-        if not schedule_plan:
+        if not scheduled_programs:
             return penalty
 
-        last_schedule = schedule_plan[-1]
+        last_schedule = scheduled_programs[-1]
 
         if last_schedule.unique_program_id != program.unique_id and schedule_time > program.start:
             penalty -= instance_data.termination_penalty
@@ -77,15 +77,15 @@ class AlgorithmUtils:
         return penalty
 
     @staticmethod
-    def get_early_termination_penalty(schedule_plan: List[Schedule], instance_data: InstanceData, program: Program,
+    def get_early_termination_penalty(scheduled_programs: List[Schedule], instance_data: InstanceData, program: Program,
                                       schedule_time: int):
         penalty = 0
-        if not schedule_plan:
+        if not scheduled_programs:
             return penalty
 
-        last_schedule = schedule_plan[-1]
+        last_schedule = scheduled_programs[-1]
 
-        if last_schedule.unique_program_id != program.unique_id and schedule_time < last_schedule.end_time:
+        if last_schedule.unique_program_id != program.unique_id and schedule_time < last_schedule.end:
             penalty -= instance_data.termination_penalty
 
         return penalty

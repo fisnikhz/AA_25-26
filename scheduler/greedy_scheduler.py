@@ -17,14 +17,14 @@ class GreedyScheduler:
         solution = []
 
         while time <= self.instance_data.closing_time:
-            valid_channel_indexes = SchedulerUtils.get_valid_schedules(schedule_plan=solution,
+            valid_channel_indexes = SchedulerUtils.get_valid_schedules(scheduled_programs=solution,
                                                                        instance_data=self.instance_data,
                                                                        schedule_time=time)
             if not valid_channel_indexes:
                 time += 1
                 continue
 
-            best_channel, channel_program, fitness = AlgorithmUtils.get_best_fit(schedule_plan=solution,
+            best_channel, channel_program, fitness = AlgorithmUtils.get_best_fit(scheduled_programs=solution,
                                                                                  instance_data=self.instance_data,
                                                                                  schedule_time=time,
                                                                                  valid_channel_indexes=valid_channel_indexes)
@@ -33,15 +33,15 @@ class GreedyScheduler:
                 time += 1
                 continue
 
-            schedule = Schedule(channel_id=best_channel.channel_id, program_id=channel_program.program_id,
-                                start_time=channel_program.start, end_time=channel_program.end, fitness=fitness,
+            schedule = Schedule(program_id=channel_program.program_id, channel_id=best_channel.channel_id,
+                                start=channel_program.start, end=channel_program.end, fitness=fitness,
                                 unique_program_id=channel_program.unique_id)
 
-            if solution and solution[-1].start_time <= schedule.start_time < solution[-1].end_time:
-                solution[-1].end_time = schedule.start_time
+            if solution and solution[-1].start <= schedule.start < solution[-1].end:
+                solution[-1].end = schedule.start
 
             solution.append(schedule)
             time += self.instance_data.min_duration
             total_score += fitness
 
-        return Solution(schedule_plan=solution, total_score=total_score)
+        return Solution(scheduled_programs=solution, total_score=total_score)

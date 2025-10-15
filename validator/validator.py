@@ -33,7 +33,7 @@ class Validator:
             return
 
         last_schedule = schedule_plan[-1]
-        if schedule_time < last_schedule.start_time + instance_data.min_duration:
+        if schedule_time < last_schedule.start + instance_data.min_duration:
             raise ConstraintException("min_duration for broadcasting channel has not been reached.")
 
     @staticmethod

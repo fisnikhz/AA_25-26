@@ -8,12 +8,12 @@ from validator.validator import Validator
 class SchedulerUtils:
 
     @staticmethod
-    def get_valid_schedules(schedule_plan: List[Schedule], instance_data: InstanceData, schedule_time: int) -> List[
+    def get_valid_schedules(scheduled_programs: List[Schedule], instance_data: InstanceData, schedule_time: int) -> List[
         int]:
         valid_channels = []
 
         for channel_index, _ in enumerate(instance_data.channels):
-            if Validator.is_channel_valid(schedule_plan, instance_data, channel_index, schedule_time):
+            if Validator.is_channel_valid(scheduled_programs, instance_data, channel_index, schedule_time):
                 valid_channels.append(channel_index)
 
         return valid_channels
