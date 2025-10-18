@@ -29,12 +29,13 @@ class GreedyScheduler:
                                                                                  schedule_time=time,
                                                                                  valid_channel_indexes=valid_channel_indexes)
 
-            if fitness <= 0 or (solution and solution[-1].channel_id == best_channel.channel_id):
+            if fitness <= 0 or (solution and solution[-1].channel_id == best_channel.channel_id and
+                                solution[-1].program_id == channel_program.program_id):
                 time += 1
                 continue
 
             schedule = Schedule(channel_id=best_channel.channel_id, program_id=channel_program.program_id,
-                                start_time=channel_program.start, end_time=channel_program.end, fitness=fitness,
+                                start_time=time, end_time=channel_program.end, fitness=fitness,
                                 unique_program_id=channel_program.unique_id)
 
             if solution and solution[-1].start_time <= schedule.start_time < solution[-1].end_time:
