@@ -15,7 +15,7 @@ class GreedyLookahead:
     def generate_solution(self) -> Solution:
         # Deterministic single pass
         solution, total_score = self._single_run()
-        return Solution(schedule_plan=solution, total_score=total_score)
+        return Solution(scheduled_programs=solution, total_score=total_score)
 
     def _single_run(self) -> Tuple[list[Schedule], int]:
         time = self.instance_data.opening_time
@@ -26,7 +26,7 @@ class GreedyLookahead:
         solution: list[Schedule] = []
 
         while time <= self.instance_data.closing_time:
-            valid_channel_indexes = SchedulerUtils.get_valid_schedules(schedule_plan=solution,
+            valid_channel_indexes = SchedulerUtils.get_valid_schedules(scheduled_programs=solution,
                                                                        instance_data=self.instance_data,
                                                                        schedule_time=time)
             if not valid_channel_indexes:
@@ -62,8 +62,8 @@ class GreedyLookahead:
                 score_now += AlgorithmUtils.get_early_termination_penalty(solution, self.instance_data, program, time)
 
                 # Build a temporary schedule to simulate the state after picking this program
-                temp_schedule = ScheduleModel(channel_id=channel.channel_id, program_id=program.program_id,
-                                              start_time=program.start, end_time=program.end, fitness=int(score_now),
+                temp_schedule = ScheduleModel(program_id=program.program_id, channel_id=channel.channel_id,
+                                              start=program.start, end=program.end, fitness=int(score_now),
                                               unique_program_id=program.unique_id)
                 simulated_plan = solution + [temp_schedule]
 
@@ -71,11 +71,11 @@ class GreedyLookahead:
                 future_best = 0
                 future_time = program.end
                 if future_time <= self.instance_data.closing_time:
-                    valid_next = SchedulerUtils.get_valid_schedules(schedule_plan=simulated_plan,
+                    valid_next = SchedulerUtils.get_valid_schedules(scheduled_programs=simulated_plan,
                                                                     instance_data=self.instance_data,
                                                                     schedule_time=future_time)
                     if valid_next:
-                        _, _, future_best = AlgorithmUtils.get_best_fit(schedule_plan=simulated_plan,
+                        _, _, future_best = AlgorithmUtils.get_best_fit(scheduled_programs=simulated_plan,
                                                                        instance_data=self.instance_data,
                                                                        schedule_time=future_time,
                                                                        valid_channel_indexes=valid_next)
@@ -93,12 +93,12 @@ class GreedyLookahead:
                 time += 1
                 continue
 
-            schedule = Schedule(channel_id=best_channel.channel_id, program_id=best_program.program_id,
-                                start_time=best_program.start, end_time=best_program.end, fitness=fitness,
+            schedule = Schedule(program_id=best_program.program_id, channel_id=best_channel.channel_id,
+                                start=best_program.start, end=best_program.end, fitness=fitness,
                                 unique_program_id=best_program.unique_id)
 
-            if solution and solution[-1].start_time <= schedule.start_time < solution[-1].end_time:
-                solution[-1].end_time = schedule.start_time
+            if solution and solution[-1].start <= schedule.start < solution[-1].end:
+                solution[-1].end = schedule.start
 
             solution.append(schedule)
             time += self.instance_data.min_duration

@@ -6,41 +6,42 @@ from models.solution import Solution
 
 class SolutionSerializer:
     """
-    Serializer i një liste të schedules (Schedule objects) në JSON.
+    Serializer of a schedule list (Schedule objects) in JSON.
     """
-    def __init__(self, output_file="output.json"):
-        self.output_path = Path("data/output/" + output_file)
-        # krijo folderin nëse nuk ekziston
-        self.output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    @staticmethod
-    def output_file_name_input():
-        output_file_name = str(input("\n Write the output file including extension: "))
-        return output_file_name
+    # Saving input file name, algorithm name and creating output directory
+    def __init__(self, input_file_path: str, algorithm_name: str):
+        self.input_file_path = Path(input_file_path)
+        self.algorithm_name = algorithm_name
+        self.output_dir = Path("data/output")
+        self.output_dir.mkdir(parents=True, exist_ok=True)
 
     def serialize(self, solution: Solution):
+        # Output file name creating based on input file, algorithm name and score
+        base_name = self.input_file_path.stem.replace("_input", "")
+        score = int(solution.total_score)
+
+        output_file = f"{base_name}_output_{self.algorithm_name}_{score}.json"
+        output_path = self.output_dir / output_file
         """
-        Merr një listë me Schedule objects dhe e ruan si JSON.
+        Takes a list of Schedule objects dhe saves as JSON.
         """
         schedules = []
-        for schedule in solution.schedule_plan:
-            # çdo Schedule kthehet në dict
+        for schedule in solution.scheduled_programs:
+            # every Schedule returns to dict
             schedules.append({
-                "channel_id": schedule.channel_id,
                 "program_id": schedule.program_id,
-                "start_time": schedule.start_time,
-                "end_time": schedule.end_time,
-                "fitness": schedule.fitness,
-                "unique_program_id": schedule.unique_program_id
+                "channel_id": schedule.channel_id,
+                "start": schedule.start,
+                "end": schedule.end,
             })
 
         data = {
-            "total_score": solution.total_score,
-            "schedule_plan": schedules
+            "scheduled_programs": schedules
         }
 
         try:
-            with open(self.output_path, "w", encoding="utf-8") as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=4, ensure_ascii=False)
+                print(f"[INFO] Result saved to the file: {output_path}")
         except Exception as e:
-            print(f"[ERROR] Deshtoi serializimi: {e}")
+            print(f"[ERROR] Serialization failed: {e}")

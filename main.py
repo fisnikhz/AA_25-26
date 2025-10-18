@@ -36,8 +36,9 @@ def main():
 
     print("\n Generated solution with total score: ", solution.total_score)
 
-    output_file_name = SolutionSerializer.output_file_name_input()
-    serializer = SolutionSerializer(output_file_name)
+    # Konvertimi ne lowercase i emrit te algoritmit varesisht tipit te scheduler dhe percjellja te serializer
+    algorithm_name = type(scheduler).__name__.lower()
+    serializer = SolutionSerializer(input_file_path=file_path, algorithm_name=algorithm_name)
     serializer.serialize(solution)
 
 if __name__ == "__main__":
