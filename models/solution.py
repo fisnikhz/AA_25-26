@@ -4,9 +4,9 @@ from models.schedule import Schedule
 
 
 class Solution:
-    def __init__(self, schedule_plan: List[Schedule], total_score: int):
-        self.schedule_plan = schedule_plan
+    def __init__(self, scheduled_programs: List[Schedule], total_score: int):
+        self.scheduled_programs = scheduled_programs
         self.total_score = total_score
 
     def __repr__(self):
-        return f"Solution({self.total_score}, schedule_plan: {self.schedule_plan})"
+        return f"Solution({self.total_score}, scheduled_programs: {self.scheduled_programs})"
