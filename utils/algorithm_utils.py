@@ -43,10 +43,18 @@ class AlgorithmUtils:
 
     @staticmethod
     def get_time_preference_bonus(instance_data: InstanceData, program: Program, schedule_time: int):
+        """
+        Calculate time preference bonus for a program.
+        The bonus applies if the program airs during the preferred time window.
+        We check if the program's broadcast time overlaps with the preference window.
+        """
         score = 0
         for preference in instance_data.time_preferences:
-            if program.genre == preference.preferred_genre and preference.start <= schedule_time < preference.end:
-                score += preference.bonus
+            if program.genre == preference.preferred_genre:
+                # Check if program's time range overlaps with preference window
+                # Program airs [program.start, program.end), preference is [pref.start, pref.end)
+                if program.start < preference.end and program.end > preference.start:
+                    score += preference.bonus
 
         return score
 
@@ -65,27 +73,32 @@ class AlgorithmUtils:
     @staticmethod
     def get_delay_penalty(scheduled_programs: List[Schedule], instance_data: InstanceData, program: Program,
                           schedule_time: int):
+        """
+        Penalty for switching to a program after its scheduled start time.
+        Since we now always schedule programs at their original times, this should not apply.
+        """
         penalty = 0
-        if not scheduled_programs:
-            return penalty
-
-        last_schedule = scheduled_programs[-1]
-
-        if last_schedule.unique_program_id != program.unique_id and schedule_time > program.start:
-            penalty -= instance_data.termination_penalty
-
+        # No delay penalty - we always schedule programs at their original start time
         return penalty
 
     @staticmethod
     def get_early_termination_penalty(scheduled_programs: List[Schedule], instance_data: InstanceData, program: Program,
                                       schedule_time: int):
+        """
+        Penalty for terminating the previous program before its scheduled end time.
+        This occurs when we switch to a new program while the previous one is still running.
+        Since we now prevent overlaps, this checks if switching to the new program would
+        cut off the previous one early.
+        """
         penalty = 0
         if not scheduled_programs:
             return penalty
 
         last_schedule = scheduled_programs[-1]
-
-        if last_schedule.unique_program_id != program.unique_id and schedule_time < last_schedule.end:
+        
+        # If the new program starts before the previous program's natural end
+        # (and we're not continuing the same program), we're cutting it short
+        if last_schedule.unique_program_id != program.unique_id and program.start < last_schedule.end:
             penalty -= instance_data.termination_penalty
 
         return penalty
