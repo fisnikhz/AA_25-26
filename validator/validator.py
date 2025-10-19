@@ -23,7 +23,9 @@ class Validator:
 
     @staticmethod
     def validate_schedule_time(instance_data: InstanceData, schedule_time: int):
-        if (schedule_time < instance_data.opening_time or schedule_time > instance_data.closing_time or
+        # Check if the schedule time is within bounds and has enough room for min_duration
+        if (schedule_time < instance_data.opening_time or 
+                schedule_time >= instance_data.closing_time or
                 schedule_time + instance_data.min_duration > instance_data.closing_time):
             raise ConstraintException("Schedule time is invalid!")
 
@@ -55,14 +57,23 @@ class Validator:
                 break
             count += 1
 
-        if count + 1 >= instance_data.max_consecutive_genre:
+        # Max R consecutive means we can have R programs, so reject if count + 1 > R
+        if count + 1 > instance_data.max_consecutive_genre:
             raise ConstraintException("max consecutive genre has been reached.")
 
     @staticmethod
     def validate_priority_time_block(instance_data: InstanceData, channel_index: int, schedule_time: int):
-        channel_to_insert_id = instance_data.channels[channel_index].channel_id
+        channel_to_insert = instance_data.channels[channel_index]
+        channel_to_insert_id = channel_to_insert.channel_id
+        
+        # Get the actual program that would be scheduled
+        program = Utils.get_channel_program_by_time(channel_to_insert, schedule_time)
+        if not program:
+            return
+        
+        # Check if the program's duration overlaps with any priority block
         for block in instance_data.priority_blocks:
-            if ((block.start <= schedule_time < block.end or (
-                    schedule_time < block.start < schedule_time + instance_data.min_duration))
-                    and channel_to_insert_id not in block.allowed_channels):
+            # Check if program's time range [program.start, program.end) overlaps with block [block.start, block.end)
+            if (program.start < block.end and program.end > block.start and 
+                    channel_to_insert_id not in block.allowed_channels):
                 raise ConstraintException("Channel not allowed in priority block.")

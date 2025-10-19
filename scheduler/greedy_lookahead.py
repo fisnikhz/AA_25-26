@@ -25,7 +25,7 @@ class GreedyLookahead:
         total_score = 0
         solution: list[Schedule] = []
 
-        while time <= self.instance_data.closing_time:
+        while time < self.instance_data.closing_time:
             valid_channel_indexes = SchedulerUtils.get_valid_schedules(scheduled_programs=solution,
                                                                        instance_data=self.instance_data,
                                                                        schedule_time=time)
@@ -47,7 +47,7 @@ class GreedyLookahead:
 
             for channel_index in valid_channel_indexes:
                 channel = self.instance_data.channels[channel_index]
-                # Lookup current program;
+                # Lookup current program
                 program = Utils.get_channel_program_by_time(channel, time)
 
                 if not program:
@@ -70,7 +70,7 @@ class GreedyLookahead:
                 # Evaluate best next choice at program.end (next scheduling moment)
                 future_best = 0
                 future_time = program.end
-                if future_time <= self.instance_data.closing_time:
+                if future_time < self.instance_data.closing_time:
                     valid_next = SchedulerUtils.get_valid_schedules(scheduled_programs=simulated_plan,
                                                                     instance_data=self.instance_data,
                                                                     schedule_time=future_time)
@@ -80,6 +80,7 @@ class GreedyLookahead:
                                                                        schedule_time=future_time,
                                                                        valid_channel_indexes=valid_next)
 
+                # Total score for selection purposes (includes future lookahead)
                 score = score_now + future_best
 
                 if score > max_score:
@@ -87,21 +88,49 @@ class GreedyLookahead:
                     best_channel = channel
                     best_program = program
 
-            fitness = int(max_score) if max_score != float('-inf') else 0
+            # Fitness for THIS step only (not including future lookahead)
+            # We need to recalculate score_now for the selected program
+            if best_program:
+                fitness = 0
+                fitness += best_program.score
+                fitness += AlgorithmUtils.get_time_preference_bonus(self.instance_data, best_program, time)
+                fitness += AlgorithmUtils.get_switch_penalty(solution, self.instance_data, best_channel)
+                fitness += AlgorithmUtils.get_delay_penalty(solution, self.instance_data, best_program, time)
+                fitness += AlgorithmUtils.get_early_termination_penalty(solution, self.instance_data, best_program, time)
+            else:
+                fitness = 0
 
-            if fitness <= 0 or (solution and solution[-1].channel_id == best_channel.channel_id):
+            # Remove the incorrect condition preventing same channel consecutively
+            # Also check that we found a valid program
+            if not best_channel or not best_program or fitness <= 0:
                 time += 1
                 continue
 
+            # Check if we're trying to schedule the exact same program again
+            if solution and solution[-1].unique_program_id == best_program.unique_id:
+                time += 1
+                continue
+
+            # Check if this program would overlap with the previous program
+            if solution and best_program.start < solution[-1].end:
+                # Can't schedule - would create overlap
+                time += 1
+                continue
+
+            # Check if this program meets minimum duration requirement
+            if best_program.end - best_program.start < self.instance_data.min_duration:
+                # Program itself is too short
+                time += 1
+                continue
+
+            # Use the program's actual start and end times
             schedule = Schedule(program_id=best_program.program_id, channel_id=best_channel.channel_id,
                                 start=best_program.start, end=best_program.end, fitness=fitness,
                                 unique_program_id=best_program.unique_id)
 
-            if solution and solution[-1].start <= schedule.start < solution[-1].end:
-                solution[-1].end = schedule.start
-
             solution.append(schedule)
-            time += self.instance_data.min_duration
+            # Move time to the end of the scheduled program
+            time = best_program.end
             total_score += fitness
 
         return solution, total_score

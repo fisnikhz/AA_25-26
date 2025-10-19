@@ -16,7 +16,7 @@ class GreedyScheduler:
         total_score = 0
         solution = []
 
-        while time <= self.instance_data.closing_time:
+        while time < self.instance_data.closing_time:
             valid_channel_indexes = SchedulerUtils.get_valid_schedules(scheduled_programs=solution,
                                                                        instance_data=self.instance_data,
                                                                        schedule_time=time)
@@ -29,20 +29,35 @@ class GreedyScheduler:
                                                                                  schedule_time=time,
                                                                                  valid_channel_indexes=valid_channel_indexes)
 
-            if fitness <= 0 or (solution and solution[-1].channel_id == best_channel.channel_id and
-                                solution[-1].program_id == channel_program.program_id):
+            if not best_channel or not channel_program or fitness <= 0:
                 time += 1
                 continue
 
+            # Check if we're trying to schedule the exact same program again
+            if solution and solution[-1].unique_program_id == channel_program.unique_id:
+                time += 1
+                continue
+
+            # Check if this program would overlap with the previous program
+            if solution and channel_program.start < solution[-1].end:
+                # Can't schedule - would create overlap
+                time += 1
+                continue
+
+            # Check if this program meets minimum duration requirement
+            if channel_program.end - channel_program.start < self.instance_data.min_duration:
+                # Program itself is too short
+                time += 1
+                continue
+
+            # Use the program's actual start and end times
             schedule = Schedule(program_id=channel_program.program_id, channel_id=best_channel.channel_id,
-                                start=time, end=channel_program.end, fitness=fitness,
+                                start=channel_program.start, end=channel_program.end, fitness=fitness,
                                 unique_program_id=channel_program.unique_id)
 
-            if solution and solution[-1].start <= schedule.start < solution[-1].end:
-                solution[-1].end = schedule.start
-
             solution.append(schedule)
-            time += self.instance_data.min_duration
+            # Move time to the end of the scheduled program
+            time = channel_program.end
             total_score += fitness
 
         return Solution(scheduled_programs=solution, total_score=total_score)
