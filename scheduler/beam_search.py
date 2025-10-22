@@ -15,15 +15,7 @@ import copy
 
 
 class BeamSearchScheduler:
-    """
-    Beam Search scheduler with:
-      - minute-level skip_table (hash table) for fast jumps (value = minutes to shift, capped at 30)
-      - beam search expansion (beam_width)
-      - fallback: if all immediate fitness <= 0, still pick the best candidate to fill schedule
-      - small bounded backtrack on the last window to try to improve overall score
-      - caches program lookups per channel/time for O(1) access
-    """
-
+ #beam search
     def __init__(self, instance_data: InstanceData, beam_width: int = 3, validate_constraints: bool = True,
                  jump_cap: int = 30, backtrack_window: int = 4):
         self.instance_data = instance_data
@@ -173,14 +165,7 @@ class BeamSearchScheduler:
         return cleaned
 
     def _build_skip_table(self) -> Dict[int, int]:
-        """
-        Build per-minute skip table (hash map).
-        For each minute 'm' in [opening_time, closing_time):
-          - find next interesting time > m
-          - compute shift = min(next_interesting - m, jump_cap)
-          - if no next interesting, set shift = jump_cap (or closing_time - m if smaller)
-        This allows O(1) skip decisions at runtime.
-        """
+   #hash table function
         opening = self.instance_data.opening_time
         closing = self.instance_data.closing_time
         arr = self.interesting_times
@@ -204,10 +189,8 @@ class BeamSearchScheduler:
         return self._get_channel_program_by_time(self.instance_data.channels[channel_idx], time)
 
     def _get_channel_program_by_time(self, channel, time: int):
-        """
-        Cache channel/time -> program lookup.
-        Assumes Utils.get_channel_program_by_time(channel, time) exists and returns the program or None.
-        """
+       #Cache channel/time -> program lookup.
+        #Assumes Utils.get_channel_program_by_time(channel, time) exists and returns the program or None.
         key = (getattr(channel, "channel_id", id(channel)), int(time))
         if key in self._channel_time_cache:
             return self._channel_time_cache[key]
@@ -235,12 +218,8 @@ class BeamSearchScheduler:
         return int(s)
 
     def _backtrack_improve(self, scheduled: List[Schedule], total_score: int, window: int = 4) -> Tuple[List[Schedule], int]:
-        """
-        Try to improve the last `window` scheduled items by re-generating alternatives.
-        - Remove last `k` items, then greedily refill that window with the best possible sequence.
-        - Keep the modification only if it improves total schedule score.
-        This is a small bounded backtrack — cheap and usually improves local quality.
-        """
+
+#backtracking
         n = len(scheduled)
         if n == 0 or window <= 0:
             return scheduled, total_score
