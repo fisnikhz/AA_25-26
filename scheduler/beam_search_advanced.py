@@ -1,163 +1,148 @@
-from typing import Tuple, List, Dict
-from models.instance_data import InstanceData
-from models.schedule import Schedule
-from models.solution import Solution
-from utils.scheduler_utils import SchedulerUtils
-from utils.utils import Utils
-from utils.algorithm_utils import AlgorithmUtils
-from models.schedule import Schedule as ScheduleModel
-import bisect
-import heapq
 import random
+import math
+import traceback
+from typing import Optional, List
+from numbers import Number
+
+from models.instance_data import InstanceData
+from models.solution import Solution
+from scheduler.beam_search import BeamSearchScheduler
 
 
 class BeamSearchSchedulerAdvanced:
-    def __init__(self, instance_data: InstanceData,
-                 beam_width: int = 3,
-                 validate_constraints: bool = True,
-                 jump_cap: int = 30,
-                 backtrack_window: int = 10,
-                 restarts: int = 3):
-
+    def __init__(
+        self,
+        instance_data: InstanceData,
+        beam_width: int = 3,
+        jump_cap: int = 30,
+        backtrack_window: int = 10,
+    ):
         self.instance_data = instance_data
-        self.beam_width = max(1, beam_width)
-        self.validate_constraints = validate_constraints
-        self.jump_cap = max(1, jump_cap)
-        self.backtrack_window = max(1, backtrack_window)
-        self.restarts = max(1, restarts)
+        self.beam_width = beam_width
+        self.jump_cap = jump_cap
+        self.backtrack_window = backtrack_window
 
-        self.interesting_times = self._build_interesting_times()
-        self.skip_table = self._build_skip_table()
-        self._cache: Dict[Tuple[int, int], object] = {}
-        random.seed(0)
+        self._restarts_run: int = 0
+        self._best_score_history: List[float] = []
+        self._last_seed: Optional[int] = None
 
-    def generate_solution(self) -> Solution:
-        best_solution, best_score = [], float('-inf')
+        self._validate_constructor_params()
 
-        for restart in range(1, self.restarts + 1):
-            seed = random.randint(1, 999999)
-            random.seed(seed)
+    def _validate_constructor_params(self) -> None:
+        if self.instance_data is None:
+            print("WARNING: instance_data is None. Behavior undefined; proceed with caution.")
+        if not isinstance(self.beam_width, int) or self.beam_width <= 0:
+            print(f"WARNING: beam_width was {self.beam_width!r}; forcing default=1.")
+            self.beam_width = 1
+        if not isinstance(self.jump_cap, int) or self.jump_cap <= 0:
+            print(f"WARNING: jump_cap was {self.jump_cap!r}; forcing default=1.")
+            self.jump_cap = 1
+        if not isinstance(self.backtrack_window, int) or self.backtrack_window <= 0:
+            print(f"WARNING: backtrack_window was {self.backtrack_window!r}; forcing default=1.")
+            self.backtrack_window = 1
 
-            adaptive_beam = self._adjust_beam_width(best_score, restart)
-            adaptive_jump = self.jump_cap + restart * 5
+    def _seed_random(self, seed: Optional[int] = None) -> int:
+        if seed is None:
+            seed = random.randint(0, 1_000_000)
+        random.seed(seed)
+        self._last_seed = seed
+        return seed
 
-            print(f"[Restart {restart}/{self.restarts}] Beam width = {adaptive_beam}, Jump cap = {adaptive_jump}, Seed = {seed}")
+    def _create_scheduler(self, dynamic_width: int) -> BeamSearchScheduler:
+        # Defensive check
+        if not isinstance(dynamic_width, int) or dynamic_width <= 0:
+            print(f"WARNING: dynamic_width invalid ({dynamic_width!r}), using 1.")
+            dynamic_width = 1
 
-            schedules, score = self._beam_search_core(
-                beam_width=adaptive_beam,
-                jump_cap=adaptive_jump
-            )
+        return BeamSearchScheduler(
+            instance_data=self.instance_data,
+            beam_width=dynamic_width,
+            jump_cap=self.jump_cap,
+            backtrack_window=self.backtrack_window,
+        )
+
+    def _safe_get_score(self, solution: Optional[Solution]) -> float:
+        if solution is None:
+            print("WARNING: scheduler returned None solution; treating score as -inf.")
+            return -float("inf")
+        # Check attribute existence
+        if not hasattr(solution, "total_score"):
+            print("WARNING: solution has no attribute 'total_score'; treating score as -inf.")
+            return -float("inf")
+        score = getattr(solution, "total_score")
+        if not isinstance(score, Number) or not math.isfinite(score):
+            print(f"WARNING: solution.total_score is not a finite number ({score!r}); treating as -inf.")
+            return -float("inf")
+        return float(score)
+
+    def _run_single_restart(self, restart_index: int, restarts: int) -> Optional[Solution]:
+        try:
+            seed = self._seed_random()
+            dynamic_width = max(1, int(self.beam_width * random.uniform(0.8, 1.5)))
+            print(f"[Restart {restart_index + 1}/{restarts}] Beam width = {dynamic_width}, Seed = {seed}")
+
+            scheduler = self._create_scheduler(dynamic_width)
+
+            solution = scheduler.generate_solution()
+
+            if solution is None:
+                print(f"WARNING: Restart {restart_index + 1} produced None solution.")
+                return None
+
+            score = self._safe_get_score(solution)
+            if score == -float("inf"):
+                print(f"WARNING: Restart {restart_index + 1} returned invalid score; ignoring result.")
+                return None
+
+            print(f"  → Restart {restart_index + 1} finished with score: {score}")
+            return solution
+
+        except Exception as exc:
+            print(f"WARNING: Exception during restart {restart_index + 1}: {exc}")
+            traceback.print_exc()
+            return None
+
+    def generate_solution(self, restarts: int = 3) -> Solution:
+        if not isinstance(restarts, int) or restarts <= 0:
+            print(f"WARNING: restarts was {restarts!r}; forcing restarts=1.")
+            restarts = 1
+
+        best_solution: Optional[Solution] = None
+        best_score: float = -float("inf")
+        self._restarts_run = 0
+        self._best_score_history.clear()
+
+        for r in range(restarts):
+            self._restarts_run += 1
+            solution = self._run_single_restart(r, restarts)
+
+            if solution is None:
+                continue
+
+            score = self._safe_get_score(solution)
+
+            self._best_score_history.append(score)
 
             if score > best_score:
                 best_score = score
-                best_solution = schedules
+                best_solution = solution
 
-            print(f"  → Restart {restart} finished with score: {int(score)}")
+        if best_solution is None:
+            print("WARNING: All restarts failed to produce a valid solution. Returning a fallback Solution.")
+            try:
+                best_solution = Solution(scheduled_programs=[], total_score=-float("inf"))
+            except Exception as exc:
+                print("WARNING: Could not create fallback Solution instance. Re-raising exception.")
+                raise RuntimeError("BeamSearchSchedulerAdvanced failed to produce any valid Solution") from exc
 
-        print(f"\nBest solution after {self.restarts} restarts: {int(best_score)}\n")
-        return Solution(scheduled_programs=best_solution, total_score=int(best_score))
+        print(f"\nBest solution after {self._restarts_run} restarts: {best_score}")
+        return best_solution
 
-    def _beam_search_core(self, beam_width: int, jump_cap: int) -> Tuple[List[Schedule], float]:
-        best_score = float('-inf')
-        best_solution = []
-        beam: List[Tuple[float, int, List[Schedule]]] = [(0.0, self.instance_data.opening_time, [])]
+    def get_last_seed(self) -> Optional[int]:
+        return self._last_seed
 
-        while beam:
-            candidates = []
-            for score, t, partial in beam:
-                if t >= self.instance_data.closing_time:
-                    if score > best_score:
-                        best_score = score
-                        best_solution = partial[:]
-                    continue
+    def get_restarts_run(self) -> int:
+        return self._restarts_run
 
-                channels = list(range(len(self.instance_data.channels)))
-                if random.random() < 0.25:
-                    random.shuffle(channels)
-
-                valid_channels = SchedulerUtils.get_valid_schedules(
-                    scheduled_programs=partial,
-                    instance_data=self.instance_data,
-                    schedule_time=t
-                ) if self.validate_constraints else channels
-
-                if not valid_channels:
-                    next_t = min(t + self.skip_table.get(t, jump_cap), self.instance_data.closing_time)
-                    candidates.append((score, next_t, partial))
-                    continue
-
-                expanded = []
-                for ch_idx in valid_channels:
-                    ch = self.instance_data.channels[ch_idx]
-                    prog = self._get_program(ch, t)
-                    if not prog:
-                        continue
-                    if partial and (partial[-1].unique_program_id == prog.unique_id or prog.start < partial[-1].end):
-                        continue
-
-                    fitness = (
-                        getattr(prog, "score", 0)
-                        + AlgorithmUtils.get_time_preference_bonus(self.instance_data, prog, t)
-                        + AlgorithmUtils.get_switch_penalty(partial, self.instance_data, ch)
-                        + AlgorithmUtils.get_delay_penalty(partial, self.instance_data, prog, t)
-                        + AlgorithmUtils.get_early_termination_penalty(partial, self.instance_data, prog, t)
-                    )
-
-                    sched = ScheduleModel(
-                        program_id=prog.program_id,
-                        channel_id=ch.channel_id,
-                        start=prog.start,
-                        end=prog.end,
-                        fitness=int(fitness),
-                        unique_program_id=prog.unique_id
-                    )
-                    new_sol = partial + [sched]
-                    expanded.append((score + fitness, prog.end, new_sol))
-
-                if not expanded:
-                    next_t = min(t + self.skip_table.get(t, jump_cap), self.instance_data.closing_time)
-                    candidates.append((score, next_t, partial))
-                else:
-                    candidates.extend(expanded)
-
-            if not candidates:
-                break
-            beam = heapq.nlargest(beam_width, candidates, key=lambda x: x[0])
-
-        return best_solution, best_score
-
-    def _adjust_beam_width(self, best_score: float, restart: int) -> int:
-        if best_score < 0:
-            return min(self.beam_width + restart, 8)
-        elif restart % 2 == 0:
-            return max(2, self.beam_width - 1)
-        else:
-            return self.beam_width + 1
-
-    def _get_program(self, channel, time: int):
-        key = (channel.channel_id, time)
-        if key in self._cache:
-            return self._cache[key]
-        prog = Utils.get_channel_program_by_time(channel, time)
-        self._cache[key] = prog
-        return prog
-
-    def _build_interesting_times(self) -> List[int]:
-        times = set()
-        for ch in self.instance_data.channels:
-            for p in ch.programs:
-                times.add(p.start)
-                times.add(p.end)
-        return sorted(t for t in times if self.instance_data.opening_time <= t <= self.instance_data.closing_time)
-
-    def _build_skip_table(self) -> Dict[int, int]:
-        skip = {}
-        times = self._build_interesting_times()
-        for t in range(self.instance_data.opening_time, self.instance_data.closing_time):
-            idx = bisect.bisect_right(times, t)
-            if idx >= len(times):
-                skip[t] = min(self.jump_cap, self.instance_data.closing_time - t)
-            else:
-                next_t = times[idx]
-                skip[t] = min(next_t - t, self.jump_cap)
-        return skip
+    def get_score_history(self) -> List[float]:
+        return list(self._best_score_history)
