@@ -14,7 +14,7 @@ class Parser:
 
     def     parse(self):
         try:
-            with open(self.file_path, 'r') as file:
+            with open(self.file_path, "r", encoding="utf-8", errors="ignore") as file:
                 data = json.load(file)
 
             channels = []
