@@ -1,0 +1,118 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tao-tao_2",
+            "channel_id": 28,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "show-maxx_4",
+            "channel_id": 89,
+            "start": 240,
+            "end": 420
+        },
+        {
+            "program_id": "sky-360_9",
+            "channel_id": 92,
+            "start": 420,
+            "end": 540
+        },
+        {
+            "program_id": "21-junior_12",
+            "channel_id": 25,
+            "start": 540,
+            "end": 600
+        },
+        {
+            "program_id": "tao-tao_6",
+            "channel_id": 28,
+            "start": 600,
+            "end": 720
+        },
+        {
+            "program_id": "supersport-4_7",
+            "channel_id": 168,
+            "start": 720,
+            "end": 840
+        },
+        {
+            "program_id": "tring-originals_18",
+            "channel_id": 139,
+            "start": 840,
+            "end": 900
+        },
+        {
+            "program_id": "novelas_25",
+            "channel_id": 68,
+            "start": 900,
+            "end": 945
+        },
+        {
+            "program_id": "bang-bang_30",
+            "channel_id": 31,
+            "start": 945,
+            "end": 968
+        },
+        {
+            "program_id": "tv-dukagjini_28",
+            "channel_id": 8,
+            "start": 970,
+            "end": 1015
+        },
+        {
+            "program_id": "cufo_30",
+            "channel_id": 32,
+            "start": 1015,
+            "end": 1037
+        },
+        {
+            "program_id": "bubble_118",
+            "channel_id": 24,
+            "start": 1038,
+            "end": 1049
+        },
+        {
+            "program_id": "top-channel_21",
+            "channel_id": 13,
+            "start": 1050,
+            "end": 1090
+        },
+        {
+            "program_id": "top-channel_22",
+            "channel_id": 13,
+            "start": 1090,
+            "end": 1140
+        },
+        {
+            "program_id": "tv-syri-vision_22",
+            "channel_id": 146,
+            "start": 1140,
+            "end": 1200
+        },
+        {
+            "program_id": "sofia_23",
+            "channel_id": 26,
+            "start": 1200,
+            "end": 1260
+        },
+        {
+            "program_id": "tv-4_26",
+            "channel_id": 103,
+            "start": 1260,
+            "end": 1320
+        },
+        {
+            "program_id": "atd-tv_2",
+            "channel_id": 134,
+            "start": 1320,
+            "end": 1380
+        },
+        {
+            "program_id": "bubble_9",
+            "channel_id": 24,
+            "start": 1380,
+            "end": 1392
+        }
+    ]
+}

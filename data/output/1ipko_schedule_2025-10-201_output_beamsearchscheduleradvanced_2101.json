@@ -1,0 +1,124 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tao-tao_2",
+            "channel_id": 28,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "prince-kids_15",
+            "channel_id": 27,
+            "start": 240,
+            "end": 279
+        },
+        {
+            "program_id": "tring-kids_12",
+            "channel_id": 23,
+            "start": 279,
+            "end": 304
+        },
+        {
+            "program_id": "novelas_10",
+            "channel_id": 68,
+            "start": 305,
+            "end": 350
+        },
+        {
+            "program_id": "novelas_11",
+            "channel_id": 68,
+            "start": 350,
+            "end": 395
+        },
+        {
+            "program_id": "novelas_12",
+            "channel_id": 68,
+            "start": 395,
+            "end": 440
+        },
+        {
+            "program_id": "novelas_13",
+            "channel_id": 68,
+            "start": 440,
+            "end": 490
+        },
+        {
+            "program_id": "novelas_14",
+            "channel_id": 68,
+            "start": 490,
+            "end": 540
+        },
+        {
+            "program_id": "sport-1_7",
+            "channel_id": 152,
+            "start": 540,
+            "end": 640
+        },
+        {
+            "program_id": "sport-1_8",
+            "channel_id": 152,
+            "start": 640,
+            "end": 780
+        },
+        {
+            "program_id": "trt-world_31",
+            "channel_id": 102,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "tv-dukagjini_24",
+            "channel_id": 8,
+            "start": 810,
+            "end": 890
+        },
+        {
+            "program_id": "kino-3_21",
+            "channel_id": 59,
+            "start": 890,
+            "end": 1013
+        },
+        {
+            "program_id": "cufo_35",
+            "channel_id": 32,
+            "start": 1013,
+            "end": 1040
+        },
+        {
+            "program_id": "3-plus_25",
+            "channel_id": 65,
+            "start": 1040,
+            "end": 1085
+        },
+        {
+            "program_id": "klan_18",
+            "channel_id": 16,
+            "start": 1085,
+            "end": 1140
+        },
+        {
+            "program_id": "klan_19",
+            "channel_id": 16,
+            "start": 1140,
+            "end": 1200
+        },
+        {
+            "program_id": "atd-tv_23",
+            "channel_id": 134,
+            "start": 1200,
+            "end": 1260
+        },
+        {
+            "program_id": "travelingo_24",
+            "channel_id": 125,
+            "start": 1260,
+            "end": 1320
+        },
+        {
+            "program_id": "trt-spor_2",
+            "channel_id": 163,
+            "start": 1320,
+            "end": 1410
+        }
+    ]
+}

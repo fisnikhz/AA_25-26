@@ -1,0 +1,142 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tv-festina_2",
+            "channel_id": 148,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "a2-cnn_3",
+            "channel_id": 144,
+            "start": 240,
+            "end": 300
+        },
+        {
+            "program_id": "rtk-1_10",
+            "channel_id": 1,
+            "start": 300,
+            "end": 360
+        },
+        {
+            "program_id": "a2_5",
+            "channel_id": 91,
+            "start": 360,
+            "end": 495
+        },
+        {
+            "program_id": "tgrt-haber_11",
+            "channel_id": 109,
+            "start": 495,
+            "end": 525
+        },
+        {
+            "program_id": "tring-history_15",
+            "channel_id": 75,
+            "start": 525,
+            "end": 576
+        },
+        {
+            "program_id": "tring-history_16",
+            "channel_id": 75,
+            "start": 576,
+            "end": 623
+        },
+        {
+            "program_id": "tring-history_17",
+            "channel_id": 75,
+            "start": 623,
+            "end": 669
+        },
+        {
+            "program_id": "klan-kosova_24",
+            "channel_id": 3,
+            "start": 670,
+            "end": 715
+        },
+        {
+            "program_id": "novelas_21",
+            "channel_id": 68,
+            "start": 715,
+            "end": 760
+        },
+        {
+            "program_id": "novelas_22",
+            "channel_id": 68,
+            "start": 760,
+            "end": 810
+        },
+        {
+            "program_id": "t7_12",
+            "channel_id": 6,
+            "start": 810,
+            "end": 840
+        },
+        {
+            "program_id": "tgrt-haber_24",
+            "channel_id": 109,
+            "start": 840,
+            "end": 885
+        },
+        {
+            "program_id": "trt-1_10",
+            "channel_id": 101,
+            "start": 885,
+            "end": 960
+        },
+        {
+            "program_id": "trt-haber_24",
+            "channel_id": 108,
+            "start": 960,
+            "end": 1020
+        },
+        {
+            "program_id": "rtsh-24_22",
+            "channel_id": 19,
+            "start": 1020,
+            "end": 1080
+        },
+        {
+            "program_id": "tgrt-eu_19",
+            "channel_id": 90,
+            "start": 1080,
+            "end": 1110
+        },
+        {
+            "program_id": "premiere-2_13",
+            "channel_id": 61,
+            "start": 1110,
+            "end": 1200
+        },
+        {
+            "program_id": "trt-haber_27",
+            "channel_id": 108,
+            "start": 1200,
+            "end": 1315
+        },
+        {
+            "program_id": "doku-2_47",
+            "channel_id": 74,
+            "start": 1315,
+            "end": 1320
+        },
+        {
+            "program_id": "tring-kids_2",
+            "channel_id": 23,
+            "start": 1336,
+            "end": 1361
+        },
+        {
+            "program_id": "tring-kids_3",
+            "channel_id": 23,
+            "start": 1361,
+            "end": 1397
+        },
+        {
+            "program_id": "tring-kids_4",
+            "channel_id": 23,
+            "start": 1397,
+            "end": 1421
+        }
+    ]
+}
