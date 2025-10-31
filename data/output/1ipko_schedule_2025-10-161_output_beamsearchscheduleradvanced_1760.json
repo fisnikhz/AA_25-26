@@ -1,0 +1,88 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "a2-cnn_2",
+            "channel_id": 144,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "trt-muzik_8",
+            "channel_id": 97,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "trt-muzik_9",
+            "channel_id": 97,
+            "start": 270,
+            "end": 330
+        },
+        {
+            "program_id": "peace-tv_13",
+            "channel_id": 151,
+            "start": 330,
+            "end": 390
+        },
+        {
+            "program_id": "peace-tv_14",
+            "channel_id": 151,
+            "start": 390,
+            "end": 420
+        },
+        {
+            "program_id": "positive-gold_10",
+            "channel_id": 123,
+            "start": 420,
+            "end": 480
+        },
+        {
+            "program_id": "syri-tv_8",
+            "channel_id": 140,
+            "start": 480,
+            "end": 600
+        },
+        {
+            "program_id": "euro-d_7",
+            "channel_id": 86,
+            "start": 600,
+            "end": 750
+        },
+        {
+            "program_id": "klan-news_6",
+            "channel_id": 142,
+            "start": 750,
+            "end": 870
+        },
+        {
+            "program_id": "klan-news_7",
+            "channel_id": 142,
+            "start": 870,
+            "end": 1020
+        },
+        {
+            "program_id": "trt-1_13",
+            "channel_id": 101,
+            "start": 1020,
+            "end": 1215
+        },
+        {
+            "program_id": "trt-1_14",
+            "channel_id": 101,
+            "start": 1215,
+            "end": 1290
+        },
+        {
+            "program_id": "rtv-21_36",
+            "channel_id": 4,
+            "start": 1290,
+            "end": 1350
+        },
+        {
+            "program_id": "trt-world_3",
+            "channel_id": 102,
+            "start": 1350,
+            "end": 1380
+        }
+    ]
+}
