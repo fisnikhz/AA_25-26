@@ -1,0 +1,124 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tao-tao_2",
+            "channel_id": 28,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "rtsh-24_5",
+            "channel_id": 19,
+            "start": 240,
+            "end": 300
+        },
+        {
+            "program_id": "episode_13",
+            "channel_id": 72,
+            "start": 300,
+            "end": 345
+        },
+        {
+            "program_id": "tring-collection_6",
+            "channel_id": 42,
+            "start": 345,
+            "end": 460
+        },
+        {
+            "program_id": "tring-collection_7",
+            "channel_id": 42,
+            "start": 460,
+            "end": 555
+        },
+        {
+            "program_id": "rtk-2_18",
+            "channel_id": 2,
+            "start": 555,
+            "end": 600
+        },
+        {
+            "program_id": "top-news_6",
+            "channel_id": 141,
+            "start": 600,
+            "end": 660
+        },
+        {
+            "program_id": "gold-hd_8",
+            "channel_id": 44,
+            "start": 660,
+            "end": 780
+        },
+        {
+            "program_id": "tring-originals_17",
+            "channel_id": 139,
+            "start": 780,
+            "end": 840
+        },
+        {
+            "program_id": "e--tv_8",
+            "channel_id": 131,
+            "start": 840,
+            "end": 960
+        },
+        {
+            "program_id": "exp-shkence_24",
+            "channel_id": 84,
+            "start": 960,
+            "end": 1020
+        },
+        {
+            "program_id": "a2-cnn_10",
+            "channel_id": 144,
+            "start": 1020,
+            "end": 1080
+        },
+        {
+            "program_id": "star_29",
+            "channel_id": 55,
+            "start": 1080,
+            "end": 1110
+        },
+        {
+            "program_id": "star-life_28",
+            "channel_id": 56,
+            "start": 1110,
+            "end": 1140
+        },
+        {
+            "program_id": "klan_21",
+            "channel_id": 16,
+            "start": 1140,
+            "end": 1200
+        },
+        {
+            "program_id": "klan_22",
+            "channel_id": 16,
+            "start": 1200,
+            "end": 1295
+        },
+        {
+            "program_id": "exp-shkence_1",
+            "channel_id": 84,
+            "start": 1295,
+            "end": 1345
+        },
+        {
+            "program_id": "bubble_4",
+            "channel_id": 24,
+            "start": 1345,
+            "end": 1352
+        },
+        {
+            "program_id": "trt-cocuk_4",
+            "channel_id": 30,
+            "start": 1370,
+            "end": 1385
+        },
+        {
+            "program_id": "trt-turk_3",
+            "channel_id": 100,
+            "start": 1390,
+            "end": 1420
+        }
+    ]
+}

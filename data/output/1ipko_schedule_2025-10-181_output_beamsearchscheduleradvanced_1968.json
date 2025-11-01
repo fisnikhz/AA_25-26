@@ -1,0 +1,112 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tao-tao_2",
+            "channel_id": 28,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "show-maxx_4",
+            "channel_id": 89,
+            "start": 240,
+            "end": 420
+        },
+        {
+            "program_id": "sky-360_9",
+            "channel_id": 92,
+            "start": 420,
+            "end": 540
+        },
+        {
+            "program_id": "21-junior_12",
+            "channel_id": 25,
+            "start": 540,
+            "end": 600
+        },
+        {
+            "program_id": "tao-tao_6",
+            "channel_id": 28,
+            "start": 600,
+            "end": 720
+        },
+        {
+            "program_id": "supersport-4_7",
+            "channel_id": 168,
+            "start": 720,
+            "end": 840
+        },
+        {
+            "program_id": "tring-originals_18",
+            "channel_id": 139,
+            "start": 840,
+            "end": 900
+        },
+        {
+            "program_id": "novelas_25",
+            "channel_id": 68,
+            "start": 900,
+            "end": 945
+        },
+        {
+            "program_id": "bang-bang_30",
+            "channel_id": 31,
+            "start": 945,
+            "end": 968
+        },
+        {
+            "program_id": "supersport-1_7",
+            "channel_id": 165,
+            "start": 975,
+            "end": 1020
+        },
+        {
+            "program_id": "rtk-2_35",
+            "channel_id": 2,
+            "start": 1020,
+            "end": 1050
+        },
+        {
+            "program_id": "t7_23",
+            "channel_id": 6,
+            "start": 1050,
+            "end": 1080
+        },
+        {
+            "program_id": "a2-cnn_17",
+            "channel_id": 144,
+            "start": 1080,
+            "end": 1230
+        },
+        {
+            "program_id": "novelas_32",
+            "channel_id": 68,
+            "start": 1230,
+            "end": 1270
+        },
+        {
+            "program_id": "novelas_33",
+            "channel_id": 68,
+            "start": 1270,
+            "end": 1315
+        },
+        {
+            "program_id": "trt-haber_30",
+            "channel_id": 108,
+            "start": 1315,
+            "end": 1320
+        },
+        {
+            "program_id": "atd-tv_2",
+            "channel_id": 134,
+            "start": 1320,
+            "end": 1380
+        },
+        {
+            "program_id": "ktv_3",
+            "channel_id": 5,
+            "start": 1380,
+            "end": 1425
+        }
+    ]
+}
