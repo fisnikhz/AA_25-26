@@ -6,6 +6,7 @@ from scheduler.beam_search import BeamSearchScheduler
 from serializer.serializer import SolutionSerializer
 from scheduler.beam_search_advanced import BeamSearchSchedulerAdvanced
 from utils.utils import Utils
+from scheduler.upper_bound_greedy import UpperBoundGreedy
 
 
 def main():
@@ -27,7 +28,8 @@ def main():
     print('2: GreedyLookahead (lookahead greedy)')
     print('3: Beam_Search (bounded lookahead)')
     print('4: Beam_Search_Advanced (advanced lookahead)')
-    choice = input('Select scheduler [1/2/3/4] (default 1): ').strip() or '1'
+    print('5: Upper Bound')
+    choice = input('Select scheduler [1/2/3/4/5] (default 1): ').strip() or '1'
 
     if choice == '2':
         scheduler = GreedyLookahead(instance)
@@ -35,6 +37,8 @@ def main():
         scheduler = BeamSearchScheduler(instance)
     elif choice == '4':
         scheduler = BeamSearchSchedulerAdvanced(instance)
+    elif choice == '5':
+        scheduler = UpperBoundGreedy(instance, honor_bonus_min=True)
     else:
         scheduler = GreedyScheduler(instance)
 
