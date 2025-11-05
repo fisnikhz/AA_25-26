@@ -6,7 +6,7 @@ from scheduler.beam_search import BeamSearchScheduler
 from serializer.serializer import SolutionSerializer
 from scheduler.beam_search_advanced import BeamSearchSchedulerAdvanced
 from utils.utils import Utils
-from scheduler.upper_bound_greedy import UpperBoundGreedyRelaxed
+from scheduler.upper_bound_greedy import UpperBoundGreedy
 
 def main():
     file_path = select_file()
@@ -37,13 +37,13 @@ def main():
     elif choice == '4':
         scheduler = BeamSearchSchedulerAdvanced(instance)
     elif choice == '5':
-        scheduler = UpperBoundGreedyRelaxed(
-            instance,
-                relax_constraint="time_pref",
-                honor_bonus_min=True,
-                preference_slack=15,
-                shift_candidates=(0, 5, -5, 10, -10)
-            )
+        scheduler = UpperBoundGreedy(
+            instance_data=instance,
+            relax_constraint="time_pref",   
+            honor_bonus_min=True,
+            preference_slack=15,
+            shift_candidates=(-10, -5, 0, 5, 10, 15) 
+        )
     else:
         scheduler = GreedyScheduler(instance)
 

@@ -1,87 +1,116 @@
-import copy
-from typing import Optional, Sequence
+# scheduler/upper_bound_greedy.py
 from scheduler.greedy_scheduler import GreedyScheduler
+from models.schedule import Schedule
+from models.solution import Solution
 
-_MIN_ATTRS = ("min_duration", "minDur", "min_time", "duration_min")
-_BONUS_MIN_ATTRS = ("bonus_min_duration", "bonusMin", "min_for_bonus")
 
-class UpperBoundGreedyRelaxed:
-    def __init__(self, instance,
-                 relax_constraint: Optional[str] = "time_pref",   
-                 honor_bonus_min: bool = True,
-                 preference_slack: int = 15,                     
-                 shift_candidates: Sequence[int] = (0, 5, -5, 10, -10)):
-        self.instance = instance
+class UpperBoundGreedy(GreedyScheduler):
+    def __init__(
+        self,
+        instance_data,
+        relax_constraint="time_pref",
+        honor_bonus_min=True,
+        preference_slack=15,
+        shift_candidates=(0, 5, 10, 15),  
+    ):
+        super().__init__(instance_data)
         self.relax_constraint = relax_constraint
         self.honor_bonus_min = honor_bonus_min
-        self.preference_slack = preference_slack
+        self.preference_slack = int(preference_slack)
         self.shift_candidates = shift_candidates
 
+        self.switch_w = 0.2
+        self.earlylate_w = 0.2
+
+    def compute_upper_bound(self) -> float:
+        total = sum(p.score for ch in self.instance_data.channels for p in ch.programs)
+        total += sum(pref.bonus for pref in self.instance_data.time_preferences)
+        return float(total)
+
     @staticmethod
-    def _first_attr(obj, names):
-        for n in names:
-            if hasattr(obj, n):
-                v = getattr(obj, n)
-                if v is not None:
-                    return v
-        return None
+    def _overlap(a_start, a_end, b_start, b_end) -> bool:
+        return max(a_start, b_start) < min(a_end, b_end)
 
-    def _required_min(self, program) -> int:
-        gmin = getattr(self.instance, "min_duration", 0) or 0
-        pmin = self._first_attr(program, _MIN_ATTRS)
-        if pmin is None:
-            pmin = max(0, getattr(program, "end", 0) - getattr(program, "start", 0))
-        req = max(int(gmin), int(pmin))
-        if self.honor_bonus_min:
-            bmin = self._first_attr(program, _BONUS_MIN_ATTRS)
-            if bmin is not None:
-                req = max(req, int(bmin))
-        return max(1, req)
+    def get_relaxed_bonus(self, program, start, end) -> float:
+        total_bonus = 0.0
+        for pref in self.instance_data.time_preferences:
+            if pref.preferred_genre.lower() != program.genre.lower():
+                continue
+            p_start = pref.start - self.preference_slack
+            p_end = pref.end + self.preference_slack
+            if self._overlap(start, end, p_start, p_end):
+                total_bonus += pref.bonus
+        return total_bonus
 
-    def _normalize_min(self, inst_copy):
-        for ch in inst_copy.channels:
-            for p in ch.programs:
-                start = getattr(p, "start", 0)
-                dur = self._required_min(p)
-                p.start = int(start)
-                p.end = int(start) + int(dur)
-                if hasattr(p, "duration"): p.duration = int(dur)
-                if hasattr(p, "min_duration"): p.min_duration = int(dur)
-                if hasattr(p, "max_duration") and getattr(p, "max_duration") is not None:
-                    p.max_duration = int(dur)
+    def relaxed_fitness(self, program, channel, prev_schedule) -> float:
+        base_score = program.score
+        bonus = self.get_relaxed_bonus(program, program.start, program.end)
+        score = base_score + bonus
 
-    def _apply_relax_flags(self, inst_copy):
-        setattr(inst_copy, "relax_constraint", self.relax_constraint)
-        setattr(inst_copy, "preference_slack", self.preference_slack)
+        if prev_schedule:
+            if prev_schedule.channel_id != channel.channel_id:
+                score -= self.switch_w * self.instance_data.switch_penalty
+            if program.start > prev_schedule.end:
+                score -= self.earlylate_w * self.instance_data.termination_penalty
 
-    def _try_shifts(self, inst_copy):
-        best_sol = None
-        best_score = -10**18
-        original = copy.deepcopy(inst_copy)
+        return max(0.0, score)
 
-        for delta in self.shift_candidates:
-            variant = copy.deepcopy(original)
-            for ch in variant.channels:
-                for p in ch.programs:
-                    p.start += delta
-                    p.end += delta
-                    p.start = max(p.start, variant.opening_time)
-                    p.end   = min(p.end,   variant.closing_time)
-                    if p.end - p.start < self._required_min(p):
-                        p.end = p.start + self._required_min(p)
-                        if p.end > variant.closing_time:
-                            pass
+    def generate_solution(self) -> Solution:
+        print("[INFO] Running Upper-Bound Greedy (continuity-safe)...")
 
-            sol = GreedyScheduler(variant).generate_solution()
-            if sol.total_score > best_score:
-                best_score, best_sol = sol.total_score, sol
+        base_solution = super().generate_solution()
+        upper_bound = self.compute_upper_bound()
 
-        return best_sol
+        relaxed_schedules = []
+        total_score = 0.0
 
-    def generate_solution(self):
-        inst_copy = copy.deepcopy(self.instance)
-        self._normalize_min(inst_copy)      
-        self._apply_relax_flags(inst_copy)
+        for sch in base_solution.scheduled_programs:
+            prog = next(
+                (
+                    p
+                    for ch in self.instance_data.channels
+                    for p in ch.programs
+                    if p.program_id == sch.program_id
+                ),
+                None,
+            )
+            if not prog:
+                continue
 
-        sol = self._try_shifts(inst_copy)
-        return sol
+            best_start, best_end = max(sch.start, prog.start), min(sch.end, prog.end)
+            fitness = self.relaxed_fitness(
+                program=prog,
+                channel=next(
+                    (ch for ch in self.instance_data.channels if ch.channel_id == sch.channel_id),
+                    None,
+                ),
+                prev_schedule=relaxed_schedules[-1] if relaxed_schedules else None,
+            )
+
+            for shift in self.shift_candidates:
+                shifted_start = best_start + shift
+                shifted_end = best_end + shift
+                if shifted_start < prog.start or shifted_end > prog.end:
+                    continue
+                bonus = self.get_relaxed_bonus(prog, shifted_start, shifted_end)
+                if fitness + 0.5 * bonus > fitness:
+                    best_start, best_end, fitness = shifted_start, shifted_end, fitness + 0.5 * bonus
+
+            relaxed_schedules.append(
+                Schedule(
+                    program_id=prog.program_id,
+                    channel_id=sch.channel_id,
+                    start=best_start,
+                    end=best_end,
+                    fitness=fitness,
+                    unique_program_id=prog.unique_id,
+                )
+            )
+            total_score += fitness
+
+            if total_score >= 0.95 * upper_bound:
+                print("[INFO] Reached 95% of theoretical upper bound — stopping.")
+                break
+
+        print(f"[INFO] Final schedule count: {len(relaxed_schedules)} | Score: {total_score:.2f}")
+        return Solution(scheduled_programs=relaxed_schedules, total_score=total_score)
