@@ -1,0 +1,166 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "a2-cnn_2",
+            "channel_id": 144,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "trt-muzik_8",
+            "channel_id": 97,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "trt-muzik_9",
+            "channel_id": 97,
+            "start": 270,
+            "end": 330
+        },
+        {
+            "program_id": "tv-dukagjini_9",
+            "channel_id": 8,
+            "start": 330,
+            "end": 360
+        },
+        {
+            "program_id": "tv-dukagjini_9",
+            "channel_id": 8,
+            "start": 360,
+            "end": 405
+        },
+        {
+            "program_id": "sky-360_11",
+            "channel_id": 92,
+            "start": 405,
+            "end": 435
+        },
+        {
+            "program_id": "sky-360_11",
+            "channel_id": 92,
+            "start": 435,
+            "end": 510
+        },
+        {
+            "program_id": "syri-tv_8",
+            "channel_id": 140,
+            "start": 510,
+            "end": 540
+        },
+        {
+            "program_id": "syri-tv_8",
+            "channel_id": 140,
+            "start": 540,
+            "end": 570
+        },
+        {
+            "program_id": "star-life_16",
+            "channel_id": 56,
+            "start": 570,
+            "end": 615
+        },
+        {
+            "program_id": "film-thriller_9",
+            "channel_id": 50,
+            "start": 615,
+            "end": 660
+        },
+        {
+            "program_id": "rtsh-24_15",
+            "channel_id": 19,
+            "start": 660,
+            "end": 690
+        },
+        {
+            "program_id": "rtsh-24_15",
+            "channel_id": 19,
+            "start": 690,
+            "end": 720
+        },
+        {
+            "program_id": "show-turk_7",
+            "channel_id": 88,
+            "start": 720,
+            "end": 750
+        },
+        {
+            "program_id": "show-turk_7",
+            "channel_id": 88,
+            "start": 750,
+            "end": 885
+        },
+        {
+            "program_id": "rtsh-3_9",
+            "channel_id": 21,
+            "start": 885,
+            "end": 915
+        },
+        {
+            "program_id": "rtsh-3_9",
+            "channel_id": 21,
+            "start": 915,
+            "end": 960
+        },
+        {
+            "program_id": "tring-classics_10",
+            "channel_id": 43,
+            "start": 960,
+            "end": 1015
+        },
+        {
+            "program_id": "premiere-1_12",
+            "channel_id": 60,
+            "start": 1015,
+            "end": 1045
+        },
+        {
+            "program_id": "premiere-1_12",
+            "channel_id": 60,
+            "start": 1045,
+            "end": 1110
+        },
+        {
+            "program_id": "pro1_11",
+            "channel_id": 11,
+            "start": 1110,
+            "end": 1140
+        },
+        {
+            "program_id": "pro1_11",
+            "channel_id": 11,
+            "start": 1140,
+            "end": 1200
+        },
+        {
+            "program_id": "family-hd_13",
+            "channel_id": 46,
+            "start": 1200,
+            "end": 1230
+        },
+        {
+            "program_id": "family-hd_13",
+            "channel_id": 46,
+            "start": 1230,
+            "end": 1260
+        },
+        {
+            "program_id": "premiere-2_14",
+            "channel_id": 61,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "rtv-21_36",
+            "channel_id": 4,
+            "start": 1290,
+            "end": 1320
+        },
+        {
+            "program_id": "rtv-21_36",
+            "channel_id": 4,
+            "start": 1320,
+            "end": 1350
+        }
+    ]
+}

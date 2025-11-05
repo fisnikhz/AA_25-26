@@ -1,0 +1,172 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tv-festina_2",
+            "channel_id": 148,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "tring-comedy_5",
+            "channel_id": 40,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "tring-comedy_5",
+            "channel_id": 40,
+            "start": 270,
+            "end": 345
+        },
+        {
+            "program_id": "tring-comedy_6",
+            "channel_id": 40,
+            "start": 345,
+            "end": 375
+        },
+        {
+            "program_id": "tring-comedy_6",
+            "channel_id": 40,
+            "start": 375,
+            "end": 445
+        },
+        {
+            "program_id": "top-channel_10",
+            "channel_id": 13,
+            "start": 445,
+            "end": 480
+        },
+        {
+            "program_id": "exp-shkence_14",
+            "channel_id": 84,
+            "start": 480,
+            "end": 530
+        },
+        {
+            "program_id": "euronews-albania_10",
+            "channel_id": 145,
+            "start": 530,
+            "end": 570
+        },
+        {
+            "program_id": "rtk-1_19",
+            "channel_id": 1,
+            "start": 570,
+            "end": 600
+        },
+        {
+            "program_id": "rtk-1_19",
+            "channel_id": 1,
+            "start": 600,
+            "end": 655
+        },
+        {
+            "program_id": "euronews-albania_12",
+            "channel_id": 145,
+            "start": 655,
+            "end": 690
+        },
+        {
+            "program_id": "dream-turk_8",
+            "channel_id": 95,
+            "start": 690,
+            "end": 780
+        },
+        {
+            "program_id": "tring-life_9",
+            "channel_id": 39,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "tring-life_9",
+            "channel_id": 39,
+            "start": 810,
+            "end": 840
+        },
+        {
+            "program_id": "tring-fantasy_10",
+            "channel_id": 41,
+            "start": 840,
+            "end": 870
+        },
+        {
+            "program_id": "tring-fantasy_10",
+            "channel_id": 41,
+            "start": 870,
+            "end": 905
+        },
+        {
+            "program_id": "tring-kids_33",
+            "channel_id": 23,
+            "start": 905,
+            "end": 962
+        },
+        {
+            "program_id": "tring-super-hd_10",
+            "channel_id": 37,
+            "start": 962,
+            "end": 1015
+        },
+        {
+            "program_id": "gurmania_10",
+            "channel_id": 80,
+            "start": 1015,
+            "end": 1045
+        },
+        {
+            "program_id": "gurmania_10",
+            "channel_id": 80,
+            "start": 1045,
+            "end": 1080
+        },
+        {
+            "program_id": "trt-belgesel_32",
+            "channel_id": 99,
+            "start": 1080,
+            "end": 1115
+        },
+        {
+            "program_id": "trt-belgesel_33",
+            "channel_id": 99,
+            "start": 1115,
+            "end": 1170
+        },
+        {
+            "program_id": "gold-hd_12",
+            "channel_id": 44,
+            "start": 1170,
+            "end": 1200
+        },
+        {
+            "program_id": "gold-hd_12",
+            "channel_id": 44,
+            "start": 1200,
+            "end": 1230
+        },
+        {
+            "program_id": "gold-hd_13",
+            "channel_id": 44,
+            "start": 1230,
+            "end": 1260
+        },
+        {
+            "program_id": "gold-hd_13",
+            "channel_id": 44,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "tv-dukagjini_29",
+            "channel_id": 8,
+            "start": 1290,
+            "end": 1320
+        },
+        {
+            "program_id": "klan_19",
+            "channel_id": 16,
+            "start": 1320,
+            "end": 1350
+        }
+    ]
+}
