@@ -1,0 +1,160 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tv-festina_2",
+            "channel_id": 148,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "cufo_7",
+            "channel_id": 32,
+            "start": 240,
+            "end": 315
+        },
+        {
+            "program_id": "prince-kids_9",
+            "channel_id": 27,
+            "start": 315,
+            "end": 354
+        },
+        {
+            "program_id": "alb-uk-tv_4",
+            "channel_id": 133,
+            "start": 354,
+            "end": 384
+        },
+        {
+            "program_id": "alb-uk-tv_4",
+            "channel_id": 133,
+            "start": 384,
+            "end": 600
+        },
+        {
+            "program_id": "tv-dukagjini_18",
+            "channel_id": 8,
+            "start": 600,
+            "end": 630
+        },
+        {
+            "program_id": "tv-dukagjini_18",
+            "channel_id": 8,
+            "start": 630,
+            "end": 660
+        },
+        {
+            "program_id": "family-hd_8",
+            "channel_id": 46,
+            "start": 660,
+            "end": 690
+        },
+        {
+            "program_id": "trt-muzik_18",
+            "channel_id": 97,
+            "start": 690,
+            "end": 720
+        },
+        {
+            "program_id": "t7_9",
+            "channel_id": 6,
+            "start": 720,
+            "end": 780
+        },
+        {
+            "program_id": "premiere-1_10",
+            "channel_id": 60,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "premiere-1_10",
+            "channel_id": 60,
+            "start": 810,
+            "end": 887
+        },
+        {
+            "program_id": "teve-1_26",
+            "channel_id": 10,
+            "start": 887,
+            "end": 920
+        },
+        {
+            "program_id": "rtk-4_18",
+            "channel_id": 129,
+            "start": 920,
+            "end": 960
+        },
+        {
+            "program_id": "dream-turk_7",
+            "channel_id": 95,
+            "start": 960,
+            "end": 990
+        },
+        {
+            "program_id": "k-sport-4_10",
+            "channel_id": 161,
+            "start": 990,
+            "end": 1020
+        },
+        {
+            "program_id": "k-sport-4_10",
+            "channel_id": 161,
+            "start": 1020,
+            "end": 1080
+        },
+        {
+            "program_id": "a2-cnn_11",
+            "channel_id": 144,
+            "start": 1080,
+            "end": 1110
+        },
+        {
+            "program_id": "a2-cnn_11",
+            "channel_id": 144,
+            "start": 1110,
+            "end": 1140
+        },
+        {
+            "program_id": "supersport-4_12",
+            "channel_id": 168,
+            "start": 1140,
+            "end": 1170
+        },
+        {
+            "program_id": "supersport-4_12",
+            "channel_id": 168,
+            "start": 1170,
+            "end": 1260
+        },
+        {
+            "program_id": "bbf_24",
+            "channel_id": 122,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "tring-super-hd_13",
+            "channel_id": 37,
+            "start": 1290,
+            "end": 1320
+        },
+        {
+            "program_id": "tring-super-hd_13",
+            "channel_id": 37,
+            "start": 1320,
+            "end": 1350
+        },
+        {
+            "program_id": "trt-belgesel_2",
+            "channel_id": 99,
+            "start": 1350,
+            "end": 1400
+        },
+        {
+            "program_id": "kino-3_3",
+            "channel_id": 59,
+            "start": 1400,
+            "end": 1437
+        }
+    ]
+}
