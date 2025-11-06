@@ -1,0 +1,136 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tv-festina_2",
+            "channel_id": 148,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "gurmania_4",
+            "channel_id": 80,
+            "start": 240,
+            "end": 360
+        },
+        {
+            "program_id": "rtk-1_11",
+            "channel_id": 1,
+            "start": 360,
+            "end": 365
+        },
+        {
+            "program_id": "top-channel_10",
+            "channel_id": 13,
+            "start": 370,
+            "end": 480
+        },
+        {
+            "program_id": "premiere-2_9",
+            "channel_id": 61,
+            "start": 480,
+            "end": 575
+        },
+        {
+            "program_id": "a-news_39",
+            "channel_id": 136,
+            "start": 590,
+            "end": 595
+        },
+        {
+            "program_id": "tring-history_16",
+            "channel_id": 75,
+            "start": 609,
+            "end": 655
+        },
+        {
+            "program_id": "trt-cocuk_38",
+            "channel_id": 30,
+            "start": 655,
+            "end": 680
+        },
+        {
+            "program_id": "trt-cocuk_39",
+            "channel_id": 30,
+            "start": 680,
+            "end": 695
+        },
+        {
+            "program_id": "trt-cocuk_41",
+            "channel_id": 30,
+            "start": 705,
+            "end": 720
+        },
+        {
+            "program_id": "kanal-7_9",
+            "channel_id": 94,
+            "start": 730,
+            "end": 750
+        },
+        {
+            "program_id": "tring-life_9",
+            "channel_id": 39,
+            "start": 755,
+            "end": 895
+        },
+        {
+            "program_id": "a-news_65",
+            "channel_id": 136,
+            "start": 895,
+            "end": 900
+        },
+        {
+            "program_id": "bang-bang_28",
+            "channel_id": 31,
+            "start": 925,
+            "end": 937
+        },
+        {
+            "program_id": "tring-world_24",
+            "channel_id": 77,
+            "start": 946,
+            "end": 1007
+        },
+        {
+            "program_id": "tring-world_25",
+            "channel_id": 77,
+            "start": 1007,
+            "end": 1053
+        },
+        {
+            "program_id": "tring-world_26",
+            "channel_id": 77,
+            "start": 1053,
+            "end": 1099
+        },
+        {
+            "program_id": "tring-world_27",
+            "channel_id": 77,
+            "start": 1099,
+            "end": 1151
+        },
+        {
+            "program_id": "tring-world_28",
+            "channel_id": 77,
+            "start": 1151,
+            "end": 1203
+        },
+        {
+            "program_id": "exp-shkence_28",
+            "channel_id": 84,
+            "start": 1255,
+            "end": 1305
+        },
+        {
+            "program_id": "exp-shkence_29",
+            "channel_id": 84,
+            "start": 1305,
+            "end": 1355
+        },
+        {
+            "program_id": "t-hd_2",
+            "channel_id": 70,
+            "start": 1355,
+            "end": 1430
+        }
+    ]
+}

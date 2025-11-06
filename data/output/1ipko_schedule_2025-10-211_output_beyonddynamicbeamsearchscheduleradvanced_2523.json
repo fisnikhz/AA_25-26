@@ -1,0 +1,130 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tao-tao_2",
+            "channel_id": 28,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "bubble_38",
+            "channel_id": 24,
+            "start": 240,
+            "end": 245
+        },
+        {
+            "program_id": "living-hd_11",
+            "channel_id": 78,
+            "start": 260,
+            "end": 320
+        },
+        {
+            "program_id": "tring-collection_6",
+            "channel_id": 42,
+            "start": 345,
+            "end": 460
+        },
+        {
+            "program_id": "tring-collection_7",
+            "channel_id": 42,
+            "start": 460,
+            "end": 555
+        },
+        {
+            "program_id": "rtk-2_18",
+            "channel_id": 2,
+            "start": 555,
+            "end": 600
+        },
+        {
+            "program_id": "a-para_15",
+            "channel_id": 106,
+            "start": 600,
+            "end": 655
+        },
+        {
+            "program_id": "gold-hd_8",
+            "channel_id": 44,
+            "start": 660,
+            "end": 780
+        },
+        {
+            "program_id": "tring-originals_17",
+            "channel_id": 139,
+            "start": 780,
+            "end": 840
+        },
+        {
+            "program_id": "tv-syri-vision_17",
+            "channel_id": 146,
+            "start": 840,
+            "end": 900
+        },
+        {
+            "program_id": "vizion-+-hd_19",
+            "channel_id": 12,
+            "start": 900,
+            "end": 950
+        },
+        {
+            "program_id": "exp-shkence_24",
+            "channel_id": 84,
+            "start": 960,
+            "end": 1020
+        },
+        {
+            "program_id": "exp-shkence_25",
+            "channel_id": 84,
+            "start": 1020,
+            "end": 1070
+        },
+        {
+            "program_id": "tring-tring_39",
+            "channel_id": 22,
+            "start": 1070,
+            "end": 1094
+        },
+        {
+            "program_id": "star-life_28",
+            "channel_id": 56,
+            "start": 1110,
+            "end": 1140
+        },
+        {
+            "program_id": "klan-plus_16",
+            "channel_id": 143,
+            "start": 1140,
+            "end": 1180
+        },
+        {
+            "program_id": "tring-series_26",
+            "channel_id": 64,
+            "start": 1180,
+            "end": 1230
+        },
+        {
+            "program_id": "trt-world_43",
+            "channel_id": 102,
+            "start": 1230,
+            "end": 1260
+        },
+        {
+            "program_id": "doku-1_26",
+            "channel_id": 73,
+            "start": 1260,
+            "end": 1310
+        },
+        {
+            "program_id": "rtk-4_2",
+            "channel_id": 129,
+            "start": 1320,
+            "end": 1380
+        },
+        {
+            "program_id": "peace-tv_4",
+            "channel_id": 151,
+            "start": 1380,
+            "end": 1410
+        }
+    ]
+}
