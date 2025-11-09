@@ -38,12 +38,10 @@ def main():
         scheduler = BeamSearchSchedulerAdvanced(instance)
     elif choice == '5':
         scheduler = UpperBoundGreedy(
-            instance_data=instance,
-            relax_constraint="time_pref",   
-            honor_bonus_min=True,
-            preference_slack=15,
-            shift_candidates=(-10, -5, 0, 5, 10, 15) 
-        )
+        instance_data=instance,
+        fixed_duration=30,              
+        include_all_preferences=True
+    )
     else:
         scheduler = GreedyScheduler(instance)
 
