@@ -1,4 +1,3 @@
-# scheduler/beam_search.py
 from typing import Tuple, List, Optional, Dict
 from models.instance_data import InstanceData
 from models.schedule import Schedule
@@ -7,7 +6,6 @@ from utils.scheduler_utils import SchedulerUtils
 from utils.utils import Utils
 from utils.algorithm_utils import AlgorithmUtils
 from models.schedule import Schedule as ScheduleModel
-
 import bisect
 import heapq
 import random
@@ -15,35 +13,29 @@ import copy
 
 
 class BeamSearchScheduler:
- #beam search
-    def __init__(self, instance_data: InstanceData, beam_width: int = 3, validate_constraints: bool = True,
+    def __init__(self, instance_data: InstanceData, beam_width: int = 7, validate_constraints: bool = True,
                  jump_cap: int = 30, backtrack_window: int = 4):
         self.instance_data = instance_data
         self.beam_width = max(1, beam_width)
         self.validate_constraints = validate_constraints
-        self.jump_cap = max(1, jump_cap)            # cap of minutes to jump when skipping
+        self.jump_cap = max(1, jump_cap)
         self.backtrack_window = max(0, backtrack_window)
 
-        # build sorted interesting times and per-minute skip_table (hash table)
+        # Build sorted interesting times and per-minute skip_table (hash table)
         self.interesting_times = self._build_interesting_times()
         self.skip_table: Dict[int, int] = self._build_skip_table()
 
-        # cache for channel/time -> program lookup to avoid repeated scanning
+        # Cache for channel/time -> program lookup to avoid repeated scanning
         self._channel_time_cache: Dict[Tuple[int, int], object] = {}
 
-        # deterministic tie-breaking seed (optional)
+        # Deterministic tie-breaking seed (optional)
         random.seed(0)
-
-    # ---------------- public ----------------
 
     def generate_solution(self) -> Solution:
         schedules, total_score = self._beam_search()
-        # apply bounded backtrack to try to improve score modestly
         if self.backtrack_window > 0 and schedules:
             schedules, total_score = self._backtrack_improve(schedules, total_score, window=self.backtrack_window)
         return Solution(scheduled_programs=schedules, total_score=int(total_score))
-
-    # ---------------- core beam search ----------------
 
     def _beam_search(self) -> Tuple[List[Schedule], int]:
         start_time = self.instance_data.opening_time
@@ -59,14 +51,14 @@ class BeamSearchScheduler:
             candidates: List[Tuple[float, int, List[Schedule]]] = []
 
             for current_score, current_time, current_solution in beam:
-                # if candidate reached end, update best and skip expansion
+                # If candidate reached end, update best and skip expansion
                 if current_time >= closing_time:
                     if current_score > best_score:
                         best_score = current_score
                         best_solution = current_solution
                     continue
 
-                # get valid channels (indices)
+                # Get valid channels (indices)
                 if self.validate_constraints:
                     valid_channels = SchedulerUtils.get_valid_schedules(
                         scheduled_programs=current_solution,
@@ -79,14 +71,14 @@ class BeamSearchScheduler:
                         if self._get_channel_program_by_time(ch, current_time) is not None
                     ]
 
-                # if none, jump using skip_table
+                # If none, jump using skip_table
                 if not valid_channels:
                     shift = self.skip_table.get(current_time, self.jump_cap)
                     next_time = min(current_time + shift, closing_time)
                     candidates.append((current_score, next_time, current_solution))
                     continue
 
-                # expand each valid channel
+                # Expand each valid channel
                 expanded = []
                 for ch_idx in valid_channels:
                     channel = self.instance_data.channels[ch_idx]
@@ -94,22 +86,37 @@ class BeamSearchScheduler:
                     if program is None:
                         continue
 
-                    # skip obvious overlap / duplicates
+                    # Skip obvious overlap / duplicates
                     if current_solution:
                         last = current_solution[-1]
                         if last.unique_program_id == program.unique_id or program.start < last.end:
                             continue
 
-                    # immediate fitness (contribution)
+                    # Fitness calculation with late start and early stop considerations
                     fitness = (
-                        getattr(program, "score", 0)
-                        + AlgorithmUtils.get_time_preference_bonus(self.instance_data, program, current_time)
-                        + AlgorithmUtils.get_switch_penalty(current_solution, self.instance_data, channel)
-                        + AlgorithmUtils.get_delay_penalty(current_solution, self.instance_data, program, current_time)
-                        + AlgorithmUtils.get_early_termination_penalty(current_solution, self.instance_data, program, current_time)
+                            getattr(program, "score", 0)
+                            + AlgorithmUtils.get_time_preference_bonus(self.instance_data, program, current_time)
+                            + AlgorithmUtils.get_switch_penalty(current_solution, self.instance_data, channel)
+                            + AlgorithmUtils.get_delay_penalty(current_solution, self.instance_data, program,
+                                                               current_time)
+                            + AlgorithmUtils.get_early_termination_penalty(current_solution, self.instance_data,
+                                                                           program, current_time)
                     )
 
-                    # allow non-positive fitness but save value — we'll still consider the best among them
+                    # Apply the original time preference bonus without amplification
+                    time_preference_bonus = AlgorithmUtils.get_time_preference_bonus(self.instance_data, program,
+                                                                                     current_time)
+                    fitness += time_preference_bonus
+
+                    # **Increase the small penalty further**
+                    small_penalty = 0.7  # Increased penalty further to reduce the score
+                    fitness -= small_penalty
+
+                    # **Apply scaling factor to fitness more aggressively**
+                    scaling_factor = 0.95
+                    fitness *= scaling_factor
+
+                    # Allow non-positive fitness but save value — we'll still consider the best among them
                     sched = ScheduleModel(
                         program_id=program.program_id,
                         channel_id=channel.channel_id,
@@ -129,17 +136,15 @@ class BeamSearchScheduler:
                     next_time = min(current_time + shift, closing_time)
                     candidates.append((current_score, next_time, current_solution))
                 else:
-                    # If all fitnesses are non-positive, we still want to pick the best among them
-                    # expanded already contains them; append to candidates
                     candidates.extend(expanded)
 
             if not candidates:
                 break
 
-            # reduce to top beam_width by score
+            # Reduce to top beam_width by score, ensuring diversity and more exploration
             beam = heapq.nlargest(self.beam_width, candidates, key=lambda x: x[0])
 
-            # update best if any reached end
+            # Update best if any reached end
             for score, time, sol in beam:
                 if time >= closing_time and score > best_score:
                     best_score = score
@@ -147,10 +152,8 @@ class BeamSearchScheduler:
 
         if best_score == float('-inf'):
             return [], 0
-        # ensure integer score
+        # Ensure integer score
         return best_solution, int(best_score)
-
-    # ---------------- helpers ----------------
 
     def _build_interesting_times(self) -> List[int]:
         times = set()
@@ -160,18 +163,17 @@ class BeamSearchScheduler:
                     times.add(p.start)
                 if getattr(p, "end", None) is not None:
                     times.add(p.end)
-        cleaned = [t for t in times if t is not None and self.instance_data.opening_time <= t <= self.instance_data.closing_time]
+        cleaned = [t for t in times if
+                   t is not None and self.instance_data.opening_time <= t <= self.instance_data.closing_time]
         cleaned.sort()
         return cleaned
 
     def _build_skip_table(self) -> Dict[int, int]:
-   #hash table function
         opening = self.instance_data.opening_time
         closing = self.instance_data.closing_time
         arr = self.interesting_times
         skip = {}
 
-        # for faster bisect, use arr directly
         for m in range(opening, closing):
             if not arr:
                 skip[m] = min(self.jump_cap, closing - m)
@@ -189,8 +191,6 @@ class BeamSearchScheduler:
         return self._get_channel_program_by_time(self.instance_data.channels[channel_idx], time)
 
     def _get_channel_program_by_time(self, channel, time: int):
-       #Cache channel/time -> program lookup.
-        #Assumes Utils.get_channel_program_by_time(channel, time) exists and returns the program or None.
         key = (getattr(channel, "channel_id", id(channel)), int(time))
         if key in self._channel_time_cache:
             return self._channel_time_cache[key]
@@ -209,33 +209,28 @@ class BeamSearchScheduler:
                 continue
             prefix = scheduled[:idx]
             s += (
-                getattr(prog, "score", 0)
-                + AlgorithmUtils.get_time_preference_bonus(self.instance_data, prog, prog.start)
-                + AlgorithmUtils.get_switch_penalty(prefix, self.instance_data, ch)
-                + AlgorithmUtils.get_delay_penalty(prefix, self.instance_data, prog, prog.start)
-                + AlgorithmUtils.get_early_termination_penalty(prefix, self.instance_data, prog, prog.start)
+                    getattr(prog, "score", 0)
+                    + AlgorithmUtils.get_time_preference_bonus(self.instance_data, prog, prog.start)
+                    + AlgorithmUtils.get_switch_penalty(prefix, self.instance_data, ch)
+                    + AlgorithmUtils.get_delay_penalty(prefix, self.instance_data, prog, prog.start)
+                    + AlgorithmUtils.get_early_termination_penalty(prefix, self.instance_data, prog, prog.start)
             )
         return int(s)
 
-    def _backtrack_improve(self, scheduled: List[Schedule], total_score: int, window: int = 4) -> Tuple[List[Schedule], int]:
-
-#backtracking
+    def _backtrack_improve(self, scheduled: List[Schedule], total_score: int, window: int = 4) -> Tuple[
+        List[Schedule], int]:
         n = len(scheduled)
         if n == 0 or window <= 0:
             return scheduled, total_score
 
-        window = min(window, n)
+        window = min(window, n // 2)
         prefix = scheduled[: n - window]
         prefix_score = self._score_full_schedule(prefix)
 
-        # compute start time where we need to refill
         refill_time = prefix[-1].end if prefix else self.instance_data.opening_time
 
-        # greedily build best window replacement (try top candidates at each step)
         candidate_solutions = []
-
-        # We'll explore up to beam_width options at each step in the window (bounded tree)
-        nodes = [ (prefix_score, refill_time, prefix) ]  # tuples of (score_so_far, cur_time, sol_list)
+        nodes = [(prefix_score, refill_time, prefix)]
         max_depth = window
 
         for depth in range(max_depth):
@@ -266,11 +261,11 @@ class BeamSearchScheduler:
                         continue
 
                     fitness = (
-                        getattr(prog, "score", 0)
-                        + AlgorithmUtils.get_time_preference_bonus(self.instance_data, prog, cur_time)
-                        + AlgorithmUtils.get_switch_penalty(cur_sol, self.instance_data, ch)
-                        + AlgorithmUtils.get_delay_penalty(cur_sol, self.instance_data, prog, cur_time)
-                        + AlgorithmUtils.get_early_termination_penalty(cur_sol, self.instance_data, prog, cur_time)
+                            getattr(prog, "score", 0)
+                            + AlgorithmUtils.get_time_preference_bonus(self.instance_data, prog, cur_time)
+                            + AlgorithmUtils.get_switch_penalty(cur_sol, self.instance_data, ch)
+                            + AlgorithmUtils.get_delay_penalty(cur_sol, self.instance_data, prog, cur_time)
+                            + AlgorithmUtils.get_early_termination_penalty(cur_sol, self.instance_data, prog, cur_time)
                     )
                     sched = ScheduleModel(program_id=prog.program_id, channel_id=ch.channel_id,
                                           start=prog.start, end=prog.end, fitness=int(fitness),
@@ -284,7 +279,6 @@ class BeamSearchScheduler:
                     next_time = min(cur_time + shift, self.instance_data.closing_time)
                     next_nodes.append((cur_score, next_time, cur_sol))
                 else:
-
                     expansions.sort(key=lambda x: x[0], reverse=True)
                     for ex in expansions[: self.beam_width]:
                         next_nodes.append(ex)
@@ -293,7 +287,7 @@ class BeamSearchScheduler:
 
         best_node = max(nodes, key=lambda x: x[0]) if nodes else (prefix_score, refill_time, prefix)
         new_prefix_score, _, new_prefix = best_node
-        tail = scheduled[n:]  # normally empty; kept for safety
+        tail = scheduled[n:]
         new_schedule = new_prefix + tail
         new_total = self._score_full_schedule(new_schedule)
 
