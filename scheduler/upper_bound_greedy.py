@@ -18,7 +18,7 @@ class UpperBoundGreedy(GreedyScheduler):
         return float(base_score + bonus_score)
 
     def generate_solution(self) -> Solution:
-        print("[INFO] Running Relaxed Upper Bound Scheduler (fully relaxed)...")
+        print("[INFO] Running Relaxed Upper Bound Scheduler (time-aware bonus applied)...")
 
         opening = self.instance_data.opening_time
         closing = self.instance_data.closing_time
@@ -30,6 +30,7 @@ class UpperBoundGreedy(GreedyScheduler):
         all_programs = [
             (p, ch) for ch in self.instance_data.channels for p in ch.programs
         ]
+
         all_programs.sort(key=lambda x: x[0].score, reverse=True)
 
         for prog, ch in all_programs:
@@ -41,8 +42,12 @@ class UpperBoundGreedy(GreedyScheduler):
             current_time = end
 
             fitness = prog.score
+
             for pref in self.instance_data.time_preferences:
-                if pref.preferred_genre.lower() == prog.genre.lower():
+                if (
+                    pref.preferred_genre.lower() == prog.genre.lower()
+                    and not (end <= pref.start or start >= pref.end)
+                ):
                     fitness += pref.bonus
 
             relaxed_schedules.append(
@@ -60,4 +65,3 @@ class UpperBoundGreedy(GreedyScheduler):
 
         print(f"[INFO] Relaxed schedule generated — total score: {total_score:.2f}")
         return Solution(scheduled_programs=relaxed_schedules, total_score=total_score)
-
