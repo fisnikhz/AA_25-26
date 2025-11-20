@@ -1,0 +1,94 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "suite_2",
+            "channel_id": 124,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "episode_5",
+            "channel_id": 72,
+            "start": 240,
+            "end": 285
+        },
+        {
+            "program_id": "episode_6",
+            "channel_id": 72,
+            "start": 285,
+            "end": 300
+        },
+        {
+            "program_id": "klan-kosova_8",
+            "channel_id": 3,
+            "start": 300,
+            "end": 475
+        },
+        {
+            "program_id": "klan-kosova_10",
+            "channel_id": 3,
+            "start": 480,
+            "end": 535
+        },
+        {
+            "program_id": "21-plus_6",
+            "channel_id": 114,
+            "start": 600,
+            "end": 720
+        },
+        {
+            "program_id": "rtsh-24_15",
+            "channel_id": 19,
+            "start": 720,
+            "end": 750
+        },
+        {
+            "program_id": "trt-cocuk_45",
+            "channel_id": 30,
+            "start": 750,
+            "end": 780
+        },
+        {
+            "program_id": "smile_19",
+            "channel_id": 35,
+            "start": 780,
+            "end": 800
+        },
+        {
+            "program_id": "life-hd_9",
+            "channel_id": 82,
+            "start": 840,
+            "end": 960
+        },
+        {
+            "program_id": "show-turk_10",
+            "channel_id": 88,
+            "start": 960,
+            "end": 1170
+        },
+        {
+            "program_id": "star_32",
+            "channel_id": 55,
+            "start": 1170,
+            "end": 1200
+        },
+        {
+            "program_id": "tv-syri-vision_23",
+            "channel_id": 146,
+            "start": 1200,
+            "end": 1260
+        },
+        {
+            "program_id": "21-popullore_24",
+            "channel_id": 115,
+            "start": 1260,
+            "end": 1320
+        },
+        {
+            "program_id": "syri-tv_2",
+            "channel_id": 140,
+            "start": 1320,
+            "end": 1350
+        }
+    ]
+}

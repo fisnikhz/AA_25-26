@@ -1,0 +1,148 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tao-tao_2",
+            "channel_id": 28,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "prince-kids_15",
+            "channel_id": 27,
+            "start": 240,
+            "end": 279
+        },
+        {
+            "program_id": "tring-kids_12",
+            "channel_id": 23,
+            "start": 279,
+            "end": 304
+        },
+        {
+            "program_id": "tring-kids_13",
+            "channel_id": 23,
+            "start": 304,
+            "end": 324
+        },
+        {
+            "program_id": "peace-tv_13",
+            "channel_id": 151,
+            "start": 330,
+            "end": 390
+        },
+        {
+            "program_id": "trt-cocuk_26",
+            "channel_id": 30,
+            "start": 390,
+            "end": 405
+        },
+        {
+            "program_id": "tv-syri-vision_10",
+            "channel_id": 146,
+            "start": 420,
+            "end": 480
+        },
+        {
+            "program_id": "rtsh-1_11",
+            "channel_id": 17,
+            "start": 480,
+            "end": 510
+        },
+        {
+            "program_id": "trt-cocuk_32",
+            "channel_id": 30,
+            "start": 510,
+            "end": 525
+        },
+        {
+            "program_id": "sport-1_7",
+            "channel_id": 152,
+            "start": 540,
+            "end": 640
+        },
+        {
+            "program_id": "sport-1_8",
+            "channel_id": 152,
+            "start": 640,
+            "end": 780
+        },
+        {
+            "program_id": "trt-world_31",
+            "channel_id": 102,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "exp-shkence_19",
+            "channel_id": 84,
+            "start": 810,
+            "end": 834
+        },
+        {
+            "program_id": "doku-2_20",
+            "channel_id": 74,
+            "start": 890,
+            "end": 900
+        },
+        {
+            "program_id": "exp-histori_21",
+            "channel_id": 85,
+            "start": 905,
+            "end": 960
+        },
+        {
+            "program_id": "exp-histori_22",
+            "channel_id": 85,
+            "start": 960,
+            "end": 1010
+        },
+        {
+            "program_id": "rtk-2_38",
+            "channel_id": 2,
+            "start": 1010,
+            "end": 1020
+        },
+        {
+            "program_id": "klan-kosova_37",
+            "channel_id": 3,
+            "start": 1020,
+            "end": 1070
+        },
+        {
+            "program_id": "living-hd_35",
+            "channel_id": 78,
+            "start": 1070,
+            "end": 1075
+        },
+        {
+            "program_id": "tv-syri-vision_21",
+            "channel_id": 146,
+            "start": 1080,
+            "end": 1140
+        },
+        {
+            "program_id": "klan_19",
+            "channel_id": 16,
+            "start": 1140,
+            "end": 1200
+        },
+        {
+            "program_id": "atd-tv_23",
+            "channel_id": 134,
+            "start": 1200,
+            "end": 1260
+        },
+        {
+            "program_id": "travelingo_24",
+            "channel_id": 125,
+            "start": 1260,
+            "end": 1320
+        },
+        {
+            "program_id": "trt-spor_2",
+            "channel_id": 163,
+            "start": 1320,
+            "end": 1410
+        }
+    ]
+}
