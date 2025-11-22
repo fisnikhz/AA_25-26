@@ -1,0 +1,292 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "rtk-2_39",
+            "channel_id": 2,
+            "start": 0,
+            "end": 30
+        },
+        {
+            "program_id": "klan-kosova_29",
+            "channel_id": 3,
+            "start": 30,
+            "end": 60
+        },
+        {
+            "program_id": "rtv-21_3",
+            "channel_id": 4,
+            "start": 60,
+            "end": 90
+        },
+        {
+            "program_id": "ktv_30",
+            "channel_id": 5,
+            "start": 90,
+            "end": 120
+        },
+        {
+            "program_id": "ktv_41",
+            "channel_id": 5,
+            "start": 120,
+            "end": 150
+        },
+        {
+            "program_id": "top-channel_18",
+            "channel_id": 13,
+            "start": 150,
+            "end": 180
+        },
+        {
+            "program_id": "dtv_1",
+            "channel_id": 14,
+            "start": 180,
+            "end": 210
+        },
+        {
+            "program_id": "rtsh-3_2",
+            "channel_id": 21,
+            "start": 210,
+            "end": 240
+        },
+        {
+            "program_id": "tring-tring_35",
+            "channel_id": 22,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "tring-kids_6",
+            "channel_id": 23,
+            "start": 270,
+            "end": 300
+        },
+        {
+            "program_id": "tring-kids_12",
+            "channel_id": 23,
+            "start": 300,
+            "end": 330
+        },
+        {
+            "program_id": "tring-kids_25",
+            "channel_id": 23,
+            "start": 330,
+            "end": 360
+        },
+        {
+            "program_id": "tring-kids_31",
+            "channel_id": 23,
+            "start": 360,
+            "end": 390
+        },
+        {
+            "program_id": "bubble_14",
+            "channel_id": 24,
+            "start": 390,
+            "end": 420
+        },
+        {
+            "program_id": "bubble_39",
+            "channel_id": 24,
+            "start": 420,
+            "end": 450
+        },
+        {
+            "program_id": "bubble_58",
+            "channel_id": 24,
+            "start": 450,
+            "end": 480
+        },
+        {
+            "program_id": "sofia_24",
+            "channel_id": 26,
+            "start": 480,
+            "end": 510
+        },
+        {
+            "program_id": "prince-kids_33",
+            "channel_id": 27,
+            "start": 510,
+            "end": 540
+        },
+        {
+            "program_id": "tao-tao_3",
+            "channel_id": 28,
+            "start": 540,
+            "end": 570
+        },
+        {
+            "program_id": "trt-cocuk_22",
+            "channel_id": 30,
+            "start": 570,
+            "end": 600
+        },
+        {
+            "program_id": "cufo_34",
+            "channel_id": 32,
+            "start": 600,
+            "end": 630
+        },
+        {
+            "program_id": "junior-tv_4",
+            "channel_id": 33,
+            "start": 630,
+            "end": 660
+        },
+        {
+            "program_id": "tring-family_9",
+            "channel_id": 34,
+            "start": 660,
+            "end": 690
+        },
+        {
+            "program_id": "smile_15",
+            "channel_id": 35,
+            "start": 690,
+            "end": 720
+        },
+        {
+            "program_id": "tring-super-hd_10",
+            "channel_id": 37,
+            "start": 720,
+            "end": 750
+        },
+        {
+            "program_id": "eurofilm_9",
+            "channel_id": 47,
+            "start": 750,
+            "end": 780
+        },
+        {
+            "program_id": "film-autor_9",
+            "channel_id": 48,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "film-drame_2",
+            "channel_id": 51,
+            "start": 810,
+            "end": 840
+        },
+        {
+            "program_id": "film-drame_8",
+            "channel_id": 51,
+            "start": 840,
+            "end": 870
+        },
+        {
+            "program_id": "film-drame_10",
+            "channel_id": 51,
+            "start": 870,
+            "end": 900
+        },
+        {
+            "program_id": "film-drame_11",
+            "channel_id": 51,
+            "start": 900,
+            "end": 930
+        },
+        {
+            "program_id": "star_16",
+            "channel_id": 55,
+            "start": 930,
+            "end": 960
+        },
+        {
+            "program_id": "star_32",
+            "channel_id": 55,
+            "start": 960,
+            "end": 990
+        },
+        {
+            "program_id": "star-life_23",
+            "channel_id": 56,
+            "start": 990,
+            "end": 1020
+        },
+        {
+            "program_id": "kino-3_22",
+            "channel_id": 59,
+            "start": 1020,
+            "end": 1050
+        },
+        {
+            "program_id": "premiere-1_1",
+            "channel_id": 60,
+            "start": 1050,
+            "end": 1080
+        },
+        {
+            "program_id": "premiere-1_3",
+            "channel_id": 60,
+            "start": 1080,
+            "end": 1110
+        },
+        {
+            "program_id": "premiere-1_8",
+            "channel_id": 60,
+            "start": 1110,
+            "end": 1140
+        },
+        {
+            "program_id": "3-plus_18",
+            "channel_id": 65,
+            "start": 1140,
+            "end": 1170
+        },
+        {
+            "program_id": "turkish-stories_6",
+            "channel_id": 66,
+            "start": 1170,
+            "end": 1200
+        },
+        {
+            "program_id": "turkish-stories_14",
+            "channel_id": 66,
+            "start": 1200,
+            "end": 1230
+        },
+        {
+            "program_id": "prime-tv_4",
+            "channel_id": 71,
+            "start": 1230,
+            "end": 1260
+        },
+        {
+            "program_id": "episode_6",
+            "channel_id": 72,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "episode_23",
+            "channel_id": 72,
+            "start": 1290,
+            "end": 1320
+        },
+        {
+            "program_id": "episode_24",
+            "channel_id": 72,
+            "start": 1320,
+            "end": 1350
+        },
+        {
+            "program_id": "tring-history_1",
+            "channel_id": 75,
+            "start": 1350,
+            "end": 1380
+        },
+        {
+            "program_id": "tring-world_11",
+            "channel_id": 77,
+            "start": 1380,
+            "end": 1410
+        },
+        {
+            "program_id": "premium-channel_1",
+            "channel_id": 81,
+            "start": 1410,
+            "end": 1438
+        }
+    ]
+}
