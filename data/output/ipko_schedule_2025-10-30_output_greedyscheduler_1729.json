@@ -1,0 +1,100 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "Halk TV’de Bugün",
+            "channel_id": 110,
+            "start": 0,
+            "end": 180
+        },
+        {
+            "program_id": "S0E1 - Pendimi",
+            "channel_id": 94,
+            "start": 285,
+            "end": 410
+        },
+        {
+            "program_id": "Fisi i faunës 3",
+            "channel_id": 70,
+            "start": 410,
+            "end": 441
+        },
+        {
+            "program_id": "S0E6 - Si do t’i Ndërtonim Sot",
+            "channel_id": 77,
+            "start": 443,
+            "end": 487
+        },
+        {
+            "program_id": "S0E1 - Universi i Pafund",
+            "channel_id": 77,
+            "start": 487,
+            "end": 542
+        },
+        {
+            "program_id": "S0E125 - Bashkallajk - (Reprize)",
+            "channel_id": 10,
+            "start": 545,
+            "end": 580
+        },
+        {
+            "program_id": "TRT News_22",
+            "channel_id": 102,
+            "start": 600,
+            "end": 630
+        },
+        {
+            "program_id": "The InnerView",
+            "channel_id": 102,
+            "start": 630,
+            "end": 660
+        },
+        {
+            "program_id": "Tenis: ATP Madrid 2024",
+            "channel_id": 168,
+            "start": 660,
+            "end": 860
+        },
+        {
+            "program_id": "Nedelnji Kolaz_26",
+            "channel_id": 1,
+            "start": 860,
+            "end": 900
+        },
+        {
+            "program_id": "Monuments of Legend",
+            "channel_id": 73,
+            "start": 900,
+            "end": 960
+        },
+        {
+            "program_id": "Ana Haber",
+            "channel_id": 101,
+            "start": 960,
+            "end": 1015
+        },
+        {
+            "program_id": "S0E89 - Zemër e zezë",
+            "channel_id": 16,
+            "start": 1040,
+            "end": 1110
+        },
+        {
+            "program_id": "Vendimi",
+            "channel_id": 36,
+            "start": 1120,
+            "end": 1200
+        },
+        {
+            "program_id": "Newsroom_90",
+            "channel_id": 136,
+            "start": 1200,
+            "end": 1380
+        },
+        {
+            "program_id": "Suite_2",
+            "channel_id": 124,
+            "start": 1380,
+            "end": 1500
+        }
+    ]
+}

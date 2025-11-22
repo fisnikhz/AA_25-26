@@ -1,0 +1,82 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "Top News",
+            "channel_id": 16,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "Endurance Autoraces: Qatar 1812km. Race (Car racing: FIA World Endurance Championship: Qatar 1812 km), Kataras_1",
+            "channel_id": 11,
+            "start": 840,
+            "end": 870
+        },
+        {
+            "program_id": "Pomeriggio 24 2025",
+            "channel_id": 18,
+            "start": 900,
+            "end": 930
+        },
+        {
+            "program_id": "Euronews Now",
+            "channel_id": 19,
+            "start": 930,
+            "end": 960
+        },
+        {
+            "program_id": "RTLZWEI News",
+            "channel_id": 8,
+            "start": 960,
+            "end": 990
+        },
+        {
+            "program_id": "Imagination Playground (Imagination Playground), United Kingdom",
+            "channel_id": 24,
+            "start": 990,
+            "end": 1020
+        },
+        {
+            "program_id": "News Live",
+            "channel_id": 22,
+            "start": 1020,
+            "end": 1050
+        },
+        {
+            "program_id": "Sera 24 2025",
+            "channel_id": 18,
+            "start": 1050,
+            "end": 1080
+        },
+        {
+            "program_id": "Të shpallet_2_1",
+            "channel_id": 1,
+            "start": 1080,
+            "end": 1110
+        },
+        {
+            "program_id": "Idefix e gli Irriducibili 1",
+            "channel_id": 4,
+            "start": 1140,
+            "end": 1170
+        },
+        {
+            "program_id": "Endurance Autoraces: Qatar 1812km. Race (Car racing: FIA World Endurance Championship: Qatar 1812 km), Kataras",
+            "channel_id": 10,
+            "start": 1170,
+            "end": 1200
+        },
+        {
+            "program_id": "Top News_3",
+            "channel_id": 16,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "RTSH 24 HD_3",
+            "channel_id": 15,
+            "start": 1320,
+            "end": 1350
+        }
+    ]
+}

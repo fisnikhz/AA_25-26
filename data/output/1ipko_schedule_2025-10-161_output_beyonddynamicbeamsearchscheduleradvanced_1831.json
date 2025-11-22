@@ -1,0 +1,88 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "a2-cnn_2",
+            "channel_id": 144,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "trt-muzik_8",
+            "channel_id": 97,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "trt-muzik_9",
+            "channel_id": 97,
+            "start": 270,
+            "end": 330
+        },
+        {
+            "program_id": "club-tv_31",
+            "channel_id": 118,
+            "start": 330,
+            "end": 335
+        },
+        {
+            "program_id": "club-tv_37",
+            "channel_id": 118,
+            "start": 390,
+            "end": 395
+        },
+        {
+            "program_id": "rtk-2_14",
+            "channel_id": 2,
+            "start": 420,
+            "end": 445
+        },
+        {
+            "program_id": "tring-family_7",
+            "channel_id": 34,
+            "start": 465,
+            "end": 580
+        },
+        {
+            "program_id": "trt-cocuk_36",
+            "channel_id": 30,
+            "start": 585,
+            "end": 610
+        },
+        {
+            "program_id": "rtv-21_20",
+            "channel_id": 4,
+            "start": 720,
+            "end": 725
+        },
+        {
+            "program_id": "kanald-drama_20",
+            "channel_id": 67,
+            "start": 810,
+            "end": 860
+        },
+        {
+            "program_id": "21-plus_9",
+            "channel_id": 114,
+            "start": 960,
+            "end": 1080
+        },
+        {
+            "program_id": "prime-tv_53",
+            "channel_id": 71,
+            "start": 1080,
+            "end": 1125
+        },
+        {
+            "program_id": "21-junior_23",
+            "channel_id": 25,
+            "start": 1200,
+            "end": 1260
+        },
+        {
+            "program_id": "premiere-2_15",
+            "channel_id": 61,
+            "start": 1293,
+            "end": 1399
+        }
+    ]
+}

@@ -1,0 +1,106 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "tv-festina_2",
+            "channel_id": 148,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "gurmania_4",
+            "channel_id": 80,
+            "start": 240,
+            "end": 360
+        },
+        {
+            "program_id": "junior-tv_7",
+            "channel_id": 33,
+            "start": 360,
+            "end": 445
+        },
+        {
+            "program_id": "trt-turk_26",
+            "channel_id": 100,
+            "start": 450,
+            "end": 480
+        },
+        {
+            "program_id": "trt-world_25",
+            "channel_id": 102,
+            "start": 600,
+            "end": 630
+        },
+        {
+            "program_id": "trt-world_26",
+            "channel_id": 102,
+            "start": 630,
+            "end": 660
+        },
+        {
+            "program_id": "sport-3_6",
+            "channel_id": 154,
+            "start": 660,
+            "end": 780
+        },
+        {
+            "program_id": "sport-3_7",
+            "channel_id": 154,
+            "start": 780,
+            "end": 900
+        },
+        {
+            "program_id": "ulke-tv_14",
+            "channel_id": 111,
+            "start": 900,
+            "end": 960
+        },
+        {
+            "program_id": "gurmania_10",
+            "channel_id": 80,
+            "start": 960,
+            "end": 1080
+        },
+        {
+            "program_id": "top-channel_17",
+            "channel_id": 13,
+            "start": 1080,
+            "end": 1095
+        },
+        {
+            "program_id": "bang-bang_33",
+            "channel_id": 31,
+            "start": 1096,
+            "end": 1117
+        },
+        {
+            "program_id": "bang-bang_36",
+            "channel_id": 31,
+            "start": 1163,
+            "end": 1186
+        },
+        {
+            "program_id": "bubble_134",
+            "channel_id": 24,
+            "start": 1192,
+            "end": 1202
+        },
+        {
+            "program_id": "kanal-10_8",
+            "channel_id": 9,
+            "start": 1260,
+            "end": 1320
+        },
+        {
+            "program_id": "travelingo_2",
+            "channel_id": 125,
+            "start": 1320,
+            "end": 1380
+        },
+        {
+            "program_id": "klan_3",
+            "channel_id": 16,
+            "start": 1380,
+            "end": 1425
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "a2-cnn_2",
+            "channel_id": 144,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "a2_4",
+            "channel_id": 91,
+            "start": 240,
+            "end": 360
+        },
+        {
+            "program_id": "a2_5",
+            "channel_id": 91,
+            "start": 360,
+            "end": 495
+        },
+        {
+            "program_id": "klan-plus_8",
+            "channel_id": 143,
+            "start": 495,
+            "end": 545
+        },
+        {
+            "program_id": "rtv-21_13",
+            "channel_id": 4,
+            "start": 545,
+            "end": 585
+        },
+        {
+            "program_id": "tgrt-haber_15",
+            "channel_id": 109,
+            "start": 600,
+            "end": 645
+        },
+        {
+            "program_id": "trt-muzik_17",
+            "channel_id": 97,
+            "start": 645,
+            "end": 675
+        },
+        {
+            "program_id": "max-hd_9",
+            "channel_id": 45,
+            "start": 675,
+            "end": 765
+        },
+        {
+            "program_id": "max-hd_10",
+            "channel_id": 45,
+            "start": 765,
+            "end": 880
+        },
+        {
+            "program_id": "a2_9",
+            "channel_id": 91,
+            "start": 885,
+            "end": 990
+        },
+        {
+            "program_id": "stinet_32",
+            "channel_id": 69,
+            "start": 995,
+            "end": 1040
+        },
+        {
+            "program_id": "stinet_33",
+            "channel_id": 69,
+            "start": 1040,
+            "end": 1090
+        },
+        {
+            "program_id": "tring-series_24",
+            "channel_id": 64,
+            "start": 1090,
+            "end": 1140
+        },
+        {
+            "program_id": "family-hd_13",
+            "channel_id": 46,
+            "start": 1140,
+            "end": 1295
+        },
+        {
+            "program_id": "tring-planet_30",
+            "channel_id": 76,
+            "start": 1297,
+            "end": 1357
+        },
+        {
+            "program_id": "exp-shkence_2",
+            "channel_id": 84,
+            "start": 1360,
+            "end": 1410
+        }
+    ]
+}

@@ -1,0 +1,130 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "a2-cnn_2",
+            "channel_id": 144,
+            "start": 0,
+            "end": 240
+        },
+        {
+            "program_id": "trt-muzik_8",
+            "channel_id": 97,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "trt-muzik_9",
+            "channel_id": 97,
+            "start": 270,
+            "end": 330
+        },
+        {
+            "program_id": "peace-tv_13",
+            "channel_id": 151,
+            "start": 330,
+            "end": 390
+        },
+        {
+            "program_id": "trt-cocuk_26",
+            "channel_id": 30,
+            "start": 390,
+            "end": 405
+        },
+        {
+            "program_id": "prince-kids_19",
+            "channel_id": 27,
+            "start": 410,
+            "end": 424
+        },
+        {
+            "program_id": "rtk-2_15",
+            "channel_id": 2,
+            "start": 445,
+            "end": 480
+        },
+        {
+            "program_id": "rtk-2_16",
+            "channel_id": 2,
+            "start": 480,
+            "end": 835
+        },
+        {
+            "program_id": "rtk-2_17",
+            "channel_id": 2,
+            "start": 835,
+            "end": 840
+        },
+        {
+            "program_id": "rtsh-24_19",
+            "channel_id": 19,
+            "start": 840,
+            "end": 900
+        },
+        {
+            "program_id": "beat-tv_13",
+            "channel_id": 112,
+            "start": 900,
+            "end": 930
+        },
+        {
+            "program_id": "peace-tv_29",
+            "channel_id": 151,
+            "start": 930,
+            "end": 960
+        },
+        {
+            "program_id": "episode_51",
+            "channel_id": 72,
+            "start": 960,
+            "end": 1006
+        },
+        {
+            "program_id": "episode_52",
+            "channel_id": 72,
+            "start": 1006,
+            "end": 1010
+        },
+        {
+            "program_id": "alsat-m_20",
+            "channel_id": 15,
+            "start": 1020,
+            "end": 1070
+        },
+        {
+            "program_id": "tring-tring_40",
+            "channel_id": 22,
+            "start": 1070,
+            "end": 1094
+        },
+        {
+            "program_id": "vizion-+-hd_23",
+            "channel_id": 12,
+            "start": 1100,
+            "end": 1140
+        },
+        {
+            "program_id": "family-hd_13",
+            "channel_id": 46,
+            "start": 1140,
+            "end": 1295
+        },
+        {
+            "program_id": "rtsh-1_23",
+            "channel_id": 17,
+            "start": 1295,
+            "end": 1345
+        },
+        {
+            "program_id": "club-tv_4",
+            "channel_id": 118,
+            "start": 1345,
+            "end": 1380
+        },
+        {
+            "program_id": "premiere-4_1",
+            "channel_id": 63,
+            "start": 1380,
+            "end": 1411
+        }
+    ]
+}
