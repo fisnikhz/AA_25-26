@@ -7,6 +7,7 @@ from serializer.serializer import SolutionSerializer
 from scheduler.beam_search_advanced import BeamSearchSchedulerAdvanced
 from scheduler.beyond_dynamic_beam_search import BeyondDynamicBeamSearchSchedulerAdvanced
 from utils.utils import Utils
+from scheduler.upper_bound_greedy import UpperBoundGreedy
 import argparse
 
 
@@ -45,6 +46,7 @@ def main():
     print('2: GreedyLookahead (lookahead greedy)')
     print('3: Beam_Search (bounded lookahead)')
     print('4: Beam_Search_Advanced (advanced lookahead)')
+    print('5: Upper Bound')
     print('5: Beyond Dynamic Beam Search + Iterative Deepening + Advanced Backtracking')
 
     choice = input('Select scheduler [1/2/3/4/5] (default 1): ').strip() or '1'
@@ -56,6 +58,13 @@ def main():
     elif choice == '4':
         scheduler = BeamSearchSchedulerAdvanced(instance)
     elif choice == '5':
+        scheduler = UpperBoundGreedy(
+        instance_data=instance,
+        fixed_duration=30,              
+        include_all_preferences=True
+    )
+    else:
+        scheduler = GreedyScheduler(instance)
         print("\nYou selected: Beyond Dynamic Beam Search + Iterative Deepening + Advanced Backtracking")
 
         beam_width = int(input("Enter beam width (default 3): ") or 3)

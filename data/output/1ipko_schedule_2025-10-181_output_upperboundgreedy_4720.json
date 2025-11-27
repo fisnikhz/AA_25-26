@@ -1,0 +1,292 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "rtk-1_12",
+            "channel_id": 1,
+            "start": 0,
+            "end": 30
+        },
+        {
+            "program_id": "rtk-2_26",
+            "channel_id": 2,
+            "start": 30,
+            "end": 60
+        },
+        {
+            "program_id": "rtk-2_35",
+            "channel_id": 2,
+            "start": 60,
+            "end": 90
+        },
+        {
+            "program_id": "klan-kosova_14",
+            "channel_id": 3,
+            "start": 90,
+            "end": 120
+        },
+        {
+            "program_id": "ktv_9",
+            "channel_id": 5,
+            "start": 120,
+            "end": 150
+        },
+        {
+            "program_id": "t7_11",
+            "channel_id": 6,
+            "start": 150,
+            "end": 180
+        },
+        {
+            "program_id": "atv_2",
+            "channel_id": 7,
+            "start": 180,
+            "end": 210
+        },
+        {
+            "program_id": "dtv_4",
+            "channel_id": 14,
+            "start": 210,
+            "end": 240
+        },
+        {
+            "program_id": "klan_18",
+            "channel_id": 16,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "rtsh-1_26",
+            "channel_id": 17,
+            "start": 270,
+            "end": 300
+        },
+        {
+            "program_id": "rtsh-1_28",
+            "channel_id": 17,
+            "start": 300,
+            "end": 330
+        },
+        {
+            "program_id": "rtsh-shqip_10",
+            "channel_id": 20,
+            "start": 330,
+            "end": 360
+        },
+        {
+            "program_id": "tring-tring_34",
+            "channel_id": 22,
+            "start": 360,
+            "end": 390
+        },
+        {
+            "program_id": "tring-tring_40",
+            "channel_id": 22,
+            "start": 390,
+            "end": 420
+        },
+        {
+            "program_id": "bubble_55",
+            "channel_id": 24,
+            "start": 420,
+            "end": 450
+        },
+        {
+            "program_id": "bubble_80",
+            "channel_id": 24,
+            "start": 450,
+            "end": 480
+        },
+        {
+            "program_id": "bubble_118",
+            "channel_id": 24,
+            "start": 480,
+            "end": 510
+        },
+        {
+            "program_id": "21-junior_12",
+            "channel_id": 25,
+            "start": 510,
+            "end": 540
+        },
+        {
+            "program_id": "21-junior_15",
+            "channel_id": 25,
+            "start": 540,
+            "end": 570
+        },
+        {
+            "program_id": "prince-kids_13",
+            "channel_id": 27,
+            "start": 570,
+            "end": 600
+        },
+        {
+            "program_id": "prince-kids_16",
+            "channel_id": 27,
+            "start": 600,
+            "end": 630
+        },
+        {
+            "program_id": "prince-kids_26",
+            "channel_id": 27,
+            "start": 630,
+            "end": 660
+        },
+        {
+            "program_id": "tao-tao_6",
+            "channel_id": 28,
+            "start": 660,
+            "end": 690
+        },
+        {
+            "program_id": "trt-cocuk_17",
+            "channel_id": 30,
+            "start": 690,
+            "end": 720
+        },
+        {
+            "program_id": "trt-cocuk_65",
+            "channel_id": 30,
+            "start": 720,
+            "end": 750
+        },
+        {
+            "program_id": "bang-bang_4",
+            "channel_id": 31,
+            "start": 750,
+            "end": 780
+        },
+        {
+            "program_id": "cufo_10",
+            "channel_id": 32,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "cufo_20",
+            "channel_id": 32,
+            "start": 810,
+            "end": 840
+        },
+        {
+            "program_id": "cufo_30",
+            "channel_id": 32,
+            "start": 840,
+            "end": 870
+        },
+        {
+            "program_id": "cufo_36",
+            "channel_id": 32,
+            "start": 870,
+            "end": 900
+        },
+        {
+            "program_id": "smile_3",
+            "channel_id": 35,
+            "start": 900,
+            "end": 930
+        },
+        {
+            "program_id": "smile_4",
+            "channel_id": 35,
+            "start": 930,
+            "end": 960
+        },
+        {
+            "program_id": "tring-life_1",
+            "channel_id": 39,
+            "start": 960,
+            "end": 990
+        },
+        {
+            "program_id": "tring-life_9",
+            "channel_id": 39,
+            "start": 990,
+            "end": 1020
+        },
+        {
+            "program_id": "tring-comedy_2",
+            "channel_id": 40,
+            "start": 1020,
+            "end": 1050
+        },
+        {
+            "program_id": "tring-fantasy_10",
+            "channel_id": 41,
+            "start": 1050,
+            "end": 1080
+        },
+        {
+            "program_id": "tring-collection_11",
+            "channel_id": 42,
+            "start": 1080,
+            "end": 1110
+        },
+        {
+            "program_id": "gold-hd_2",
+            "channel_id": 44,
+            "start": 1110,
+            "end": 1140
+        },
+        {
+            "program_id": "film-thriller_13",
+            "channel_id": 50,
+            "start": 1140,
+            "end": 1170
+        },
+        {
+            "program_id": "film-komedi_15",
+            "channel_id": 53,
+            "start": 1170,
+            "end": 1200
+        },
+        {
+            "program_id": "star_1",
+            "channel_id": 55,
+            "start": 1200,
+            "end": 1230
+        },
+        {
+            "program_id": "kino-2_7",
+            "channel_id": 58,
+            "start": 1230,
+            "end": 1260
+        },
+        {
+            "program_id": "kino-2_13",
+            "channel_id": 58,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "kino-3_7",
+            "channel_id": 59,
+            "start": 1290,
+            "end": 1320
+        },
+        {
+            "program_id": "premiere-2_1",
+            "channel_id": 61,
+            "start": 1320,
+            "end": 1350
+        },
+        {
+            "program_id": "premiere-3_3",
+            "channel_id": 62,
+            "start": 1350,
+            "end": 1380
+        },
+        {
+            "program_id": "premiere-4_3",
+            "channel_id": 63,
+            "start": 1380,
+            "end": 1410
+        },
+        {
+            "program_id": "tring-series_15",
+            "channel_id": 64,
+            "start": 1410,
+            "end": 1439
+        }
+    ]
+}
